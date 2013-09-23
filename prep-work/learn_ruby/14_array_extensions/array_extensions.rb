@@ -17,7 +17,7 @@ class Array
 
   def square!
     return self if self.empty?
-    self.map! { |x| x * 2 }       
+    self.map! { |x| x ** 2 }       
   end
 
 end
