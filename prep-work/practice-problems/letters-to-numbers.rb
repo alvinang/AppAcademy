@@ -23,7 +23,5 @@ def phone_number_converter(num)
 			end
 		end		
 	end
- 
 	converted_num.join
- 
 end

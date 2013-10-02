@@ -1,5 +1,4 @@
 def recursion
-
 	puts "Have you had lunch? "
 	answer = gets.chomp
 
@@ -8,5 +7,4 @@ def recursion
 	else
 		recursion
 	end
-	
 end

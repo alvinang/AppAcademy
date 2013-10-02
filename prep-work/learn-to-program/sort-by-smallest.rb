@@ -8,7 +8,6 @@ def sorted(array)
 end
 
 def sort(array, sorted)
-
 	if array.length <= 0
 		return sorted
 	end
@@ -24,12 +23,8 @@ def sort(array, sorted)
 			unsorted.push value_in_array
 		end		
 	end
-
 	sorted.push smallest_value
-
 	sort(unsorted, sorted)	
-	
-	
 end
 
 puts sorted([1,4,3,5,1,2])

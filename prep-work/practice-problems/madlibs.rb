@@ -1,7 +1,6 @@
 # Create hash with content in (()). Loop to get content in (()) using regex. Replace & output
 
 def madlibs(template)
-
 	to_replace = {}
 	to_substitute = template.scan(/\(\(.*?\)\)/)
 
@@ -14,7 +13,6 @@ def madlibs(template)
 	to_replace.each do |key, value|
 		template.gsub!(key, value)
 	end
-
 	template
 end
 

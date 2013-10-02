@@ -3,7 +3,6 @@
 # process and output word
 
 def english_number(number)
-
 	if number < 0
 		puts "Please enter a positive number"
 	elsif number == 0
@@ -44,9 +43,7 @@ def english_number(number)
 		else
 			result = result + tens[write - 1] + " "
 		end
-
 	end
-
 
 	write = left
 	left = 0
@@ -56,11 +53,9 @@ def english_number(number)
 	end
 
 	result
-
 end
 
 def beer_song(num)
-
 	while num >= 0
 		puts "#{english_number(num)} Bottles of Beer on the Wall"
 		num -= 1

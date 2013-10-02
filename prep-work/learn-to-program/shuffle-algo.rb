@@ -3,8 +3,7 @@
 # 3. condition: not the same as array
 
 
-def shuffle(array)
-		
+def shuffle(array)	
 	shuffled = []
 
 	while array.length > 0
@@ -16,9 +15,7 @@ def shuffle(array)
 	if shuffled == array || shuffled == array.sort
 		shuffle(array)
 	end
-
 	puts shuffled
-
 end
 
 shuffle([3,2,5,2,3,2,1,5,6,87,423])
