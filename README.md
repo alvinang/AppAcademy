@@ -17,5 +17,3 @@ The application process comprises of 4 sections (as of September 23rd, 2013). Tw
 * [App Academy coding-test](https://github.com/appacademy/prep-work), coding-test-1 (for online test 1), coding-test-2 + mini-curriculum for test 2
 * Find other programming questions on google around Ruby
 
-
-PS: I have not been accepted to AppAcademy yet as of September 23rd, 2013
