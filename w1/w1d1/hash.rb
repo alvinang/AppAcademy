@@ -14,11 +14,39 @@
 #
 # We could have defined a class named Set, and these methods would have been instance methods. We don't define a new class here because I want you to see how you can do this with just methods, and hijack the Ruby Hash class to represent your set.
 
-class Set
-
-end
-
-
+# def set_add_el(set, val)
+#   if set[val].nil?
+#     set[val] = true
+#   end
+#   return set
+# end
+#
+# def set_remove_el(set, val)
+#   unless set[val].nil?
+#     set.delete(val)
+#   end
+#   return set
+# end
+#
+# def set_list_els(set)
+#   set.keys
+# end
+#
+# def set_member?(set, val)
+#   set.has_key?(val) ? true : false
+# end
+#
+# def set_union(set1, set2)
+#   return set1.merge(set2)
+# end
+#
+# def set_intersect(set1, set2)
+#   set1.keep_if { |key, value| set2.has_key?(key)}
+# end
+#
+# def set_minus(set1, set2)
+#   set1.delete_if { |key, value| set2.has_key?(key) }
+# end
 
 ########################################################################
 

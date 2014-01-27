@@ -24,10 +24,11 @@
 #      3
 #
 # p return_value # => [1, 2, 3]
-
+#
 # class Array
 #   def my_each
-#     self.size.times { |n| puts self[n] }
+#     self.size.times { |n| yield self[n] }
+#     self
 #   end
 # end
 
