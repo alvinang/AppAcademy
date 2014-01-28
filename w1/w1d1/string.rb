@@ -38,21 +38,21 @@
 #                      ^
 
 
-# def num_to_s(num, base)
-#   return 0 if num == 0
-#   # create hash for digits and characters
-#   characters = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F']
-#   result = []
-#   division = 1
-#
-#   while num > division
-#     result << characters[(num/division) % base]
-#     division = division * base
-#   end
-#
-#   result.reverse.join("")
-#
-# end
+def num_to_s(num, base)
+  return 0 if num == 0
+  # create hash for digits and characters
+  characters = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F']
+  result = []
+  division = 1
+
+  while num > division
+    result << characters[(num/division) % base]
+    division = division * base
+  end
+
+  result.reverse.join("")
+
+end
 
 
 
@@ -67,18 +67,18 @@
 # In particular, "b".ord - "a".ord == 1.
 # Lastly, be careful of the letters at the end of the alphabet, like "z"!
 
-#
-# def caesar(string, num)
-#   result = []
-#   answer = []
-#
-#   #remove "a" ordinal value
-#   string.each_byte { |c| result << ((c.to_i) - 96 + num) }
-#
-#   #add num and modulus 26 incase of "z"
-#   result.map { |i| ((i % 26) + 96).chr }.join("")
-#
-# end
+
+def caesar(string, num)
+  result = []
+  answer = []
+
+  #remove "a" ordinal value
+  string.each_byte { |c| result << ((c.to_i) - 96 + num) }
+
+  #add num and modulus 26 incase of "z"
+  result.map { |i| ((i % 26) + 96).chr }.join("")
+
+end
 
 
 

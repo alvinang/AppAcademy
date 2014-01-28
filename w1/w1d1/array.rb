@@ -16,14 +16,14 @@
 # end
 # This is called monkey patching.
 
-# class Array
-#   def my_uniq
-#     # use include? to get uniq array
-#     result = []
-#     self.each { |n| result << n unless result.include?(n) }
-#     result
-#   end
-# end
+class Array
+  def my_uniq
+    # use include? to get uniq array
+    result = []
+    self.each { |n| result << n unless result.include?(n) }
+    result
+  end
+end
 
 ################################################################################################
 # Two sum
@@ -35,20 +35,20 @@
 # [-1, 0, 2, -2, 1].two_sum # => [[0, 4], [2, 3]]
 # [0, 2] before [2, 1] (smaller first elements come first)
 # [0, 1] before [0, 2] (then smaller second elements come first)
-#
-# class Array
-#   def two_sum
-#     result = []
-#     #loop through array once, 2nd loop to compare, then check. avoid same index.
-#     self.size.times do |n|
-#       (n + 1).upto (self.size - 1) do |i|
-#         result << [n, i] if (self[n] + self[i] == 0)
-#       end
-#     end
-#     result
-#
-#   end
-# end
+
+class Array
+  def two_sum
+    result = []
+    #loop through array once, 2nd loop to compare, then check. avoid same index.
+    self.size.times do |n|
+      (n + 1).upto (self.size - 1) do |i|
+        result << [n, i] if (self[n] + self[i] == 0)
+      end
+    end
+    result
+
+  end
+end
 
 
 
@@ -76,18 +76,18 @@
 #   ]
 # Write a method, my_transpose, which will convert between the row-oriented and column-oriented representations. You may assume square matrices for simplicity's sake.
 
-# class Array
-#   def my_transpose
-#     result = Array.new(self.size) {[]}
-#
-#     self.size.times do |n|
-#       self.size.times do |i|
-#         result[i][n] = self[n][i]
-#       end
-#     end
-#     result
-#   end
-# end
+class Array
+  def my_transpose
+    result = Array.new(self.size) {[]}
+
+    self.size.times do |n|
+      self.size.times do |i|
+        result[i][n] = self[n][i]
+      end
+    end
+    result
+  end
+end
 
 
 ################################################################################################
@@ -97,22 +97,22 @@
 # Write a method that takes an array of stock prices (prices on days 0, 1, ...), and
 # outputs the most profitable pair of days on which to first buy the stock and then sell the stock.
 
-# def stock_picker(array)
-#   # loop through array twice. Once to take value, 2nd to compare, store index into result
-#   result = []
-#   profit, buy_day, sell_day = 0, 0, 0
-#
-#   array.size.times do |n|
-#     (n + 1).upto (array.size - 1) do |i|
-#       if (array[n] - array[i]) > profit
-#         profit = array[n] - array[i]
-#         buy_day = n
-#         sell_day = i
-#       end
-#     end
-#   end
-#   [buy_day, sell_day]
-# end
+def stock_picker(array)
+  # loop through array twice. Once to take value, 2nd to compare, store index into result
+  result = []
+  profit, buy_day, sell_day = 0, 0, 0
+
+  array.size.times do |n|
+    (n + 1).upto (array.size - 1) do |i|
+      if (array[n] - array[i]) > profit
+        profit = array[n] - array[i]
+        buy_day = n
+        sell_day = i
+      end
+    end
+  end
+  [buy_day, sell_day]
+end
 
 
 

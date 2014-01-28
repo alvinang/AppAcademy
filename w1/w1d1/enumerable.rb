@@ -2,9 +2,9 @@
 
 # Write a method that takes an array of integers and returns an array with the array elements multiplied by two.
 
-# def multiply_by_two(array)
-#   array.map { |n| n * 2 }
-# end
+def multiply_by_two(array)
+  array.map { |n| n * 2 }
+end
 
 ###########################################################################
 
@@ -24,13 +24,13 @@
 #      3
 #
 # p return_value # => [1, 2, 3]
-#
-# class Array
-#   def my_each
-#     self.size.times { |n| yield self[n] }
-#     self
-#   end
-# end
+
+class Array
+  def my_each
+    self.size.times { |n| yield self[n] }
+    self
+  end
+end
 
 ###########################################################################
 
@@ -38,17 +38,17 @@
 # return the middle item from the sorted array. If the array has an even number of integers, return the average
 # of the middle two items from the sorted array. (This one might not use any enumerable methods?)
 
-# def median(array)
-#   array_size = array.size
-#   midpoint = array_size / 2
-#
-#   if array_size.odd?
-#     median = array[midpoint]
-#   else
-#     median = (array[midpoint] + array[midpoint - 1]) / 2.0
-#   end
-#   median
-# end
+def median(array)
+  array_size = array.size
+  midpoint = array_size / 2
+
+  if array_size.odd?
+    median = array[midpoint]
+  else
+    median = (array[midpoint] + array[midpoint - 1]) / 2.0
+  end
+  median
+end
 
 
 ###########################################################################
@@ -58,9 +58,9 @@
 # concatenate(["Yay ", "for ", "strings!"])
 # # => "Yay for strings!"
 
-# def concatenate(array)
-#   array.inject(:+)
-# end
+def concatenate(array)
+  array.inject(:+)
+end
 
 
 
