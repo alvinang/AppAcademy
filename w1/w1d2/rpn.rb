@@ -1,3 +1,5 @@
+# You've written an RPN calculator. Practice by rewriting your version better than you had before. It should have a user interface which reads from standard input one operand or operator at a time. You should be able to invoke it as a script from the command line. You should be able to, optionally, give it a filename on the command line, in which case it opens and reads that file instead of reading user input.
+
 class RPNCalculator
 
   def initialize
@@ -60,16 +62,17 @@ class RPNCalculator
   end
 
   def get_file_input filename
-    File.foreach(filename) do |line|
+    # remove .txt if exists
+    filename = filename.sub(/\.\w*$/,'')
+    
+    File.foreach("#{filename}.txt") do |line|
       puts evaluate(line.chomp)
     end
   end
 
-
 end
 
 if __FILE__ == $PROGRAM_NAME
-
   calculator = RPNCalculator.new
 
   if ARGV.empty?
