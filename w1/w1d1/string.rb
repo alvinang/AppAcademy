@@ -55,6 +55,17 @@ def num_to_s(num, base)
 end
 
 
+# for a recursive method
+
+def num_to_s(num, base)
+  return 0 if num == 0
+  
+  remainder = num % base
+  
+  
+end
+
+
 
 ##########################################################################################
 
