@@ -60,7 +60,8 @@ end
 
 
 ############################################################
-# Write a method substrings that will take a String and return an array containing each of its substrings. Don't repeat substrings. Example output: substrings("cat") => ["c", "ca", "cat", "a", "at", "t"].
+# Write a method substrings that will take a String and return an array containing each 
+# of its substrings. Don't repeat substrings. Example output: substrings("cat") => ["c", "ca", "cat", "a", "at", "t"].
 
 
 def substrings(string)
@@ -76,7 +77,8 @@ def substrings(string)
 end
 
 ############################################################
-# Your substrings method returns many strings that are not true English words. Let's write a new method, subwords which will call substrings, but then filter it and return just the English words.
+# Your substrings method returns many strings that are not true English words. Let's write a new method, 
+# subwords which will call substrings, but then filter it and return just the English words.
 
 def subwords(string)
   dictionary = []

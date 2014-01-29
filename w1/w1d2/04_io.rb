@@ -1,4 +1,6 @@
-# Write a number guessing game. The computer should choose a number between 1 and 100. It should prompt the user for guesses. Each time, it will prompt the user for a guess; it will return too high or too low. It should track the number of guesses the player took.
+# Write a number guessing game. The computer should choose a number between 1 and 100. It should prompt 
+# the user for guesses. Each time, it will prompt the user for a guess; it will return too high or too low. 
+# It should track the number of guesses the player took.
 
 def number_game
 

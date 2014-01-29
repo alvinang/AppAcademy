@@ -1,4 +1,5 @@
-# Implement a Rock, Paper, Scissors game. The method rps should take a string (either "Rock", "Paper" or "Scissors") as a parameter and return the computer's choice, and the outcome of the match. Example:
+# Implement a Rock, Paper, Scissors game. The method rps should take a string (either "Rock", "Paper" or "Scissors") 
+# as a parameter and return the computer's choice, and the outcome of the match. Example:
 # rps("Rock") # => "Paper, Lose"
 # rps("Scissors") # => "Scissors, Draw"
 # rps("Scissors") # => "Paper, Win"
@@ -31,7 +32,10 @@ def rps input
 end
 
 #############################################################################################
-# Implement a Mixology game. The method remix should take an array of ingredient arrays (one alcohol, one mixer) and return the same type of data structure, with the ingredient pairs randomly mixed up. Assume that the first item in the pair array is alcohol, and the second is a mixer. Don't pair an alcohol with an alcohol with or a mixer with a mixer. An example run of the program:
+# Implement a Mixology game. The method remix should take an array of ingredient arrays (one alcohol, one mixer) 
+# and return the same type of data structure, with the ingredient pairs randomly mixed up. Assume that the first 
+# item in the pair array is alcohol, and the second is a mixer. Don't pair an alcohol with an alcohol with or a mixer 
+# with a mixer. An example run of the program:
 # remix([
 #   ["rum", "coke"],
 #   ["gin", "tonic"],

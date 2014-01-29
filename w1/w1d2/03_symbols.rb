@@ -1,4 +1,5 @@
-# Write a method super_print that takes a String. This method should take optional parameters :times, :upcase, and :reverse with reasonable default values. For example:
+# Write a method super_print that takes a String. This method should take optional parameters :times, 
+# :upcase, and :reverse with reasonable default values. For example:
 # 
 # super_print("Hello")                                    #=> "Hello"
 # super_print("Hello", :times => 3)                       #=> "Hello" 3x
