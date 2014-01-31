@@ -3,22 +3,29 @@ require 'debugger'
 # monkey-patching the Array class. Don't use any of the original versions when
 # writing these. You can use my_each to define the others.
 
+# each takes ever element and pass it to a block
 class Array
   def my_each(&blk)
-    self.length.times { |index| blk.call self[index] }
+    self.length.times do |el|
+      blk.call(self[el])
+    end    
     self
   end
 
   def my_map(&blk)
-    result = []
-    self.my_each { |el| result << blk.call(el) }
-    result
+    [].tap do |result|
+      self.my_each do |el|
+        blk.call(el)
+      end
+    end
   end
 
   def my_select(&blk)
-    result = []
-    self.my_each { |el| result << el if blk.call(el) }
-    result
+    [].tap do |result|
+      self.my_each do |el|
+        result << el if blk.call(el)
+      end
+    end
   end
 end
 
@@ -57,6 +64,7 @@ class Array
 
     until check_sort
       check_sort = true
+      
       index = 0
       while index < (sorted.length - 1)
         case blk.call(sorted[index], sorted[index + 1])
@@ -81,8 +89,19 @@ end
 # To take possibly multiple arguments, check out the Ruby splat operator.
 
 def eval_block (*arguments, &blk)
-  puts "NO BLOCK GIVEN" unless block_given?
-  arguments.each do |argument|
-    blk.call(argument)
-  end
+  blk.nil? ? puts 'NO BLOCK GIVEN' : blk.call(*arguments)
 end
+
+# Example calls to eval_block
+#eval_block("Kerry", "Washington", 23) do |*args|
+#  first_name = args[0]
+#  last_name = args[1]
+#  score = args[2]
+#  puts "#{ last_name }, #{ first_name } won #{ score } votes."
+#end
+# => Washington, Kerry won 23 votes.
+
+#eval_block(1,2,3,4,5) do |*args|
+#  p args.inject(:+)
+#end
+# => 15

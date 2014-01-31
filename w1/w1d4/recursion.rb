@@ -55,30 +55,25 @@ end
 # reduces the exponent by one for each recursion, while the second reduces it
 # by half. Even if we don't recurse as deeply, do we call exp using recursion 2
 # less often than using recursion 1?
-$counter = 0
+
+# 256 loops for n == 256
 def exp_first(value, power)
-  return 1 if power == 0
-  value * exp_first(value, power - 1)
-
-  $counter += 1
-  $counter
+  power == 0 ? 1 : (value * exp_first(value, power - 1))
 end
-# 256
 
+# 9 loops for n = 256
 def exp_second(value, power)
-  $counter += 1
-  return 1 if power == 0
-  return value if power == 1
-
-  if power.even?
-    (exp_second(value, power/2) ** 2)
+  case power
+  when 0
+    return 1
+  when 1
+    return value
   else
-    value * (exp_second(value, (power - 1) / 2 ) ** 2)
-  end
-  $counter
+    exp_second(value, (power/2).floor) * exp_second(value, (power/2).ceil)
+  end  
 end
 
-# 9
+# 2^3 => (3/2).floor = 1, (3/2).ceil = 2; 2^1 * 2^2 == 2^3
 
 
 ################################################################
@@ -109,23 +104,23 @@ end
 #
 # You should be able to handle "mixed" arrays like [1, [2], [3, [4]]].
 
+# class Array
+#   def deep_dup
+#     [].tap do |dup|
+#       self.each do |el|
+#         dup << (el.is_a?(Array) ? el.deep_dup : el)
+#       end
+#     end        
+#   end
+# end
+
+# OR
+
 class Array
   def deep_dup
-    result = []
-    return result if self.empty?
-
-    self.each do |el|
-      if el.is_a?(Array)
-        result << el.deep_dup
-      else
-        result << el
-      end
-    end
-
-    result
+    map { |el| el.is_a?(Array) ? el.deep_dup : el }
   end
 end
-
 
 ################################################################
 
@@ -164,6 +159,23 @@ def fib_rec(num)
 
 end
 
+# Nicer structure
+
+def fib_rec(num)
+  return [] if num <= 0
+  
+  case num
+  when 1
+    return [0]
+  when 2
+    return [0, 1]
+  else
+    fibs = fibs_rec(n - 1)
+    fibs << fibs[-2] + fibs[-1]
+  end
+  
+end
+
 ################################################################
 # Binary Search
 #
@@ -172,31 +184,48 @@ end
 # found object (or nil if not found!). Hint: you will probably want to use
 # subarrays.
 
+# refactored version 2
 def bsearch(array, target)
-  return nil if array.empty?
-  return nil if array.length == 1 && array[0] != target
-  sorted_array = array.sort
-  arr_size = array.size
-  midpoint = arr_size / 2
-  puts midpoint
-  n = sorted_array[midpoint] <=> target
-  case n
+  return nil if array.length == 0
+  
+  midpoint = array.length / 2
+  case target <=> array[midpoint]
   when -1
-    # move right
-    subarray = sorted_array[(midpoint + 1)..-1]
-    index = bsearch(subarray, target)
-    return midpoint + index + 1 if index
-    return nil
+    bsearch(array.take(midpoint), target)
+  when 0
+    midpoint
   when 1
-    # move left
-    subarray = sorted_array[0..(midpoint - 1)]
-    index = bsearch(subarray, target)
-    return index
-  else
-    puts 'found at #{midpoint}'
-    return midpoint
+    index = bsearch(array.drop(midpoint + 1), target)
+    (index.nil?) ? nil : (midpoint + 1) + index
   end
 end
+
+# version 1
+# def bsearch(array, target)
+#   return nil if array.empty?
+#   return nil if array.length == 1 && array[0] != target
+#   sorted_array = array.sort
+#   arr_size = array.size
+#   midpoint = arr_size / 2
+#   puts midpoint
+#   n = sorted_array[midpoint] <=> target
+#   case n
+#   when -1
+#     # move right
+#     subarray = sorted_array[(midpoint + 1)..-1]
+#     index = bsearch(subarray, target)
+#     return midpoint + index + 1 if index
+#     return nil
+#   when 1
+#     # move left
+#     subarray = sorted_array[0..(midpoint - 1)]
+#     index = bsearch(subarray, target)
+#     return index
+#   else
+#     puts 'found at #{midpoint}'
+#     return midpoint
+#   end
+# end
 
 ################################################################
 
@@ -206,6 +235,7 @@ end
 # currency, but wonky currencies like [10, 7, 1]. This means trying every
 # combination of coins.
 
+# WIP: all combinations
 def make_change(amount, coins = [25, 10, 5, 1])
   return 0 if (coins.empty? || amount == 0)
 
@@ -230,28 +260,19 @@ class Array
   def merge_sort
     return self if self.length <= 1
     to_sort = self
-
     midpoint = to_sort.length / 2
 
-    array1, array2 = to_sort[0...midpoint], to_sort[midpoint..-1]
-
-    return merge(array1.merge_sort, array2.merge_sort)
+    array1, array2 = to_sort.take(midpoint), to_sort.drop(midpoint)
+    merge(array1.merge_sort, array2.merge_sort)
   end
 
   def merge array1, array2
     sorted_array = []
-    until (array1.empty? && array2.empty?)
-      if array1.empty?
-        sorted_array << array2.shift
-      elsif array2.empty?
-        sorted_array << array1.shift
-      else
-        compare = array1[0] <=> array2[0]
-
-        sorted_array << ((compare == 1) ? array2.shift : array1.shift)
-      end
+    until (array1.empty? || array2.empty?)
+      sorted_array << (array1.first < array2.first ? array1.shift : array2.shift)
     end
-    sorted_array
+    
+    sorted_array + array1 + array2      
   end
 end
 
@@ -264,27 +285,10 @@ end
 # subsets([1, 2, 3])
 # # => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
 
-def subsets ary
-  return [[]] if ary.empty?
-
-
-  small_subs = subsets(ary[0...ary.length-1])
-  last_subs = small_subs.map {|array| array + [ary.last]}
-
-  small_subs + last_subs
-
+def subsets array
+  return [[]] if array.empty?
+  
+  small_subs = subsets(array.take(array.length - 1))
+  supersize = small_subs.map { |sub| sub + [array.last] }
+  small_subs + supersize
 end
-
-
-p subsets([1,2,3,4])
-
-
-
-
-
-
-
-
-
-
-
