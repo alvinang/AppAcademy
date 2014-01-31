@@ -226,5 +226,61 @@ end
 # Hint: The base case for this sort is surprisingly simple.
 # You'll want to write a merge helper method to merge the sorted halves.
 
+class Array
+  def merge_sort
+    return self if self.length <= 1
+    to_sort = self
+
+    midpoint = to_sort.length / 2
+
+    array1, array2 = to_sort[0...midpoint], to_sort[midpoint..-1]
+
+    return merge(array1.merge_sort, array2.merge_sort)
+  end
+
+  def merge array1, array2
+    sorted_array = []
+    until (array1.empty? && array2.empty?)
+      if array1.empty?
+        sorted_array << array2.shift
+      elsif array2.empty?
+        sorted_array << array1.shift
+      else
+        compare = array1[0] <=> array2[0]
+
+        sorted_array << ((compare == 1) ? array2.shift : array1.shift)
+      end
+    end
+    sorted_array
+  end
+end
+
+
+################################################################
+# Write a method, subsets, that will return all subsets of an array.
+# subsets([]) # => [[]]
+# subsets([1]) # => [[], [1]]
+# subsets([1, 2]) # => [[], [1], [2], [1, 2]]
+# subsets([1, 2, 3])
+# # => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+
+def subsets ary
+  return [[]] if ary.empty?
+  return [[], ary] if ary.length == 1
+
+  subsets(ary[0...length-1])
+
+
+
+end
+
+
+
+
+
+
+
+
+
 
 
