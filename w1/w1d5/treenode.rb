@@ -1,10 +1,18 @@
 class TreeNode
-  attr_accessor :parent, :children, :value
+  attr_accessor :parent, :children, :value, :path, :counter
 
   def initialize(parent, value)
     @parent = parent
     @children = []
     @value = value
+    @path = []
+    @counter = 0
+  end
+
+  def print_tree
+    puts "Self: #{@value}"
+    print "Children: "
+    @children.each { |child| print child.value }
   end
 
   def remove_child(child_node)
@@ -16,10 +24,10 @@ class TreeNode
     # remove the child from previous parent if necessary ?????
     child_node.parent = self
     self.children << child_node
+    child_node
   end
 
   def dfs(value)
-     p self.value
      return self if self.value == value
      return nil if self.children.empty?
 
@@ -29,6 +37,8 @@ class TreeNode
        if child.dfs(value).nil?
          next
        else
+         # @path << dfs_result.value
+         @counter += 1
          return dfs_result
        end
      end

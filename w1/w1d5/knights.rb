@@ -1,20 +1,34 @@
-require './treenode.rb'
+require './treenode'
 
 class KnightPathFinder
+  attr_accessor :root
 
   def initialize(start_position)
     @start_position = start_position
-    # buid_move_tree
+    build_move_tree
   end
 
   def build_move_tree
-    visited = [start_position]
-    root = TreeNode.new(nil, start_position)
-    possible_moves = new_move_positions(start_position)
+    visited = [@start_position]
+    @root = TreeNode.new(nil, @start_position)
+    queue = [@root]
 
-    possible_moves.each do |move|
-      root.add_child(move) # but not if you've already visited there
+    until queue.empty?
+      parent_node = queue.first.parent
+      current_node   = queue.shift
+      possible_moves = new_move_positions(current_node.value)
+
+      possible_moves.each do |move|
+        unless visited.include?(move)
+          new_node = TreeNode.new(current_node, move)
+          current_node.add_child(new_node)
+          queue << new_node
+          visited << move
+        end
+      end
     end
+
+    visited.sort
 
   end
 
@@ -42,6 +56,8 @@ class KnightPathFinder
     end
   end
 
-
+  def find_path(target_pos)
+    @root.dfs(target_pos)
+  end
 
 end
