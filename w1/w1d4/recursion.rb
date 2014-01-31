@@ -268,7 +268,7 @@ def subsets ary
   return [[]] if ary.empty?
 
 
-  small_subs = subsets(ary[0..ary.length-1])
+  small_subs = subsets(ary[0...ary.length-1])
   last_subs = small_subs.map {|array| array + [ary.last]}
 
   small_subs + last_subs
