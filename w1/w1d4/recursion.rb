@@ -266,13 +266,17 @@ end
 
 def subsets ary
   return [[]] if ary.empty?
-  return [[], ary] if ary.length == 1
-
-  subsets(ary[0...length-1])
 
 
+  small_subs = subsets(ary[0..ary.length-1])
+  last_subs = small_subs.map {|array| array + [ary.last]}
+
+  small_subs + last_subs
 
 end
+
+
+p subsets([1,2,3,4])
 
 
 
