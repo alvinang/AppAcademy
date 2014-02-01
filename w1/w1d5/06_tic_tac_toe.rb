@@ -175,8 +175,7 @@ class ComputerPlayer
   end
 
   def move(game, mark)
-    # winner_move(game, mark) || random_move(game)
-    #all your goodies go here
+    winner_move(game, mark) || random_move(game)
   end
 
   private
@@ -213,4 +212,17 @@ if __FILE__ == $PROGRAM_NAME
   cp = ComputerPlayer.new
 
   TicTacToe.new(hp, cp).run
+end
+
+
+class SuperComputerPlayer < ComputerPlayer
+  def move(game, mark)
+    t = TicTacToeNode.new(game, mark)
+    t.children.each do |child|
+      if child.winning_node?(mark)
+        x, y = child.prev_move_pos
+        game[x][y] = mark
+      end
+    end
+  end
 end
