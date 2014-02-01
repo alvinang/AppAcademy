@@ -30,7 +30,7 @@ class ReachableWords
     one_letter_diff = []
     @words_to_expand.each do |similar_word|
       (similar_word.length).times do 
-        one_letter_diff << 
+        one_letter_diff <<  
   end
 
 end
