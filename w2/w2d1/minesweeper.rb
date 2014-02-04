@@ -1,15 +1,13 @@
 require 'yaml'
-require 'io/console'
+require 'io/console' # for STDIN.getch
 
 class Tile
   attr_reader :position
 
   def initialize(args)
-    @position = args[:position]
-    @bomb = args[:bomb]
-    @board = args[:board]
-    @flag = false
-    @reveal = false
+    @position, @bomb, @board = args[:position], args[:bomb], args[:board]
+    @flag, @reveal = false, false
+    @diffs = [1, 0, -1].product([1,0,-1]) - [[0, 0]]
   end
 
   def reveal
@@ -31,20 +29,16 @@ class Tile
     @flag = false
   end
 
-  # return list of neighbors
   def neighbors
-    diffs = [1, 0, -1].product([1,0,-1]) - [[0, 0]]
     coordinates = []
-    diffs.each do |x, y|
-      x = self.position.first + x
-      y = self.position.last + y
+    @diffs.each do |x, y|
+      x, y = self.position.first + x, self.position.last + y
       coordinates << [x, y]
-
     end
+    
     @board.board.select{ |tile| coordinates.include?(tile.position) }
   end
 
-  # count number of bombs in neighbors, get list from neighbors
   def neighbor_bomb_count
     self.neighbors.count { |neighbor| neighbor.bombed? }
   end
@@ -62,14 +56,8 @@ class Tile
   end
 
   def blank?
-    # puts "#{self.neighbors} blank? called"
     self.neighbors.none? { |neighbor| neighbor.bombed? }
   end
-
-  def to_s
-    "#{@position} - #{@bomb} - #{@reveal}"
-  end
-
 end
 
 class Board
@@ -93,7 +81,10 @@ class Board
     end
   end
 
-  # true, keep going. false, bomb!
+  def find_tile coordinates
+    @board.find { |tile| tile.position == coordinates }
+  end
+  
   def reveal_tile coordinates
     self.find_tile(coordinates).reveal
   end
@@ -106,29 +97,20 @@ class Board
     self.find_tile(coordinates).neighbor_bomb_count
   end
 
-  def find_tile coordinates
-    @board.find { |tile| tile.position == coordinates }
-  end
-
   def win?
-    @board.all? do |tile|
-      tile.revealed? || (tile.bombed? && tile.flagged?)
-    end
+    @board.all? { |tile| tile.revealed? || (tile.bombed? && tile.flagged?) }
   end
 
   def lost?
-    @board.any?{|tile| tile.revealed? && tile.bombed? }
+    @board.any? {|tile| tile.revealed? && tile.bombed? }
   end
 end
 
 class UI
-
+  
   def initialize
     @board = Board.new
-    @bomb = 'B'
-    @flag = 'F'
-    @blank = '_'
-    @unopened = '*'
+    @bomb, @flag, @blank, @unopened = 'B', 'F', '_', '*'
   end
 
   def display_board
@@ -165,8 +147,7 @@ class UI
     until @board.win? || @board.lost?
       puts "Choose a new coordinate"
       display_board
-      move = get_move
-      position = get_position
+      move, position = get_move, get_position
       if move == "f"
         @board.flag_tile(position)
       elsif move == "o"
@@ -183,22 +164,30 @@ class UI
   end
 
   def save
-    File.open('minesweeper.yaml', 'w') { |file| file.write self.to_yaml }
+    puts "Enter filename to save at: "
+    filename = gets.chomp
+    
+    File.write("#{filename}.yaml", YAML.dump(self))
   end
 
-  def self.load
-    ui = YAML.load_file('minesweeper.yaml')
-  end
+  # def self.load
+  #   ui = YAML.load_file('minesweeper.yaml')
+  # end
 end
 
 class KeystrokeUI
-  def initialize
-    @board = Board.new
-    @flag = "\u2690"
-    @unopened = "\u25FD"
-    @blank = " "
-    @bomb = ' '
-    @cursor = "\u25C9"
+  
+  LAYOUTS = {
+    :small => { :dimensions => [9, 9], :n_bombs => 10 },
+    :medium => { :dimensions => [16, 16], :n_bombs => 40 },
+    :large => { :dimensions => [32, 32], :n_bombs => 160 }
+  }
+  
+  def initialize(size)
+    dimensions = LAYOUTS[size]
+    @board = Board.new(dimensions[:dimensions], dimensions[:n_bombs])
+    @flag, @unopened, @cursor = "\u2690", "\u25FD", "\u25C9"
+    @blank, @bomb = " ", ' '
     @cursor_position = [1, 1]
   end
 
@@ -270,14 +259,26 @@ class KeystrokeUI
     end
     if @board.lost?
       display_board
-      puts "You lose!"
+      puts "*** BOMB..You LOSE! Try again :) ***"
     else
+      display_board
       puts "You win!"
     end
   end
-
-end
-
-  if __FILE__ == $PROGRAM_NAME
-    KeystrokeUI.new.play
+  
+  def save
+    puts "Enter filename to save at: "
+    filename = gets.chomp
+    
+    File.write("#{filename}.yaml", YAML.dump(self))
   end
+end
+  
+if __FILE__ == $PROGRAM_NAME
+  case ARGV.count
+  when 0    
+    KeystrokeUI.new(:small).play
+  when 1
+    YAML.load_file(ARGV.shift).play
+  end
+end
