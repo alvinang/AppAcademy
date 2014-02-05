@@ -1,0 +1,11 @@
+GEM
+  specs:
+    colorize (0.6.0)
+    dispel (0.0.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  colorize
+  dispel
