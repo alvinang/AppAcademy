@@ -5,6 +5,6 @@ class Rook < SlidingPiece
   end
 
   def to_s
-    "\u2656 "
+    @color == :w ? "\u2656" : "\u265C"
   end
 end

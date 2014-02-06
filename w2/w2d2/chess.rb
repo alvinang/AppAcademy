@@ -13,6 +13,4 @@ require './pieces/pawn.rb'
 
 require './board'
 require './game'
-require './player'
-
-
+require './human_player'
