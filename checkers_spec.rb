@@ -1,14 +1,20 @@
 require './piece'
 require './board'
 require './game'
+require './human_player'
 
 b = Board.new
 
+p b.display_board
+b.
+
+
 # test generate board (ok)
 
+# p b.object_id == b.dup.object_id
 
 # p = Piece.new(b, [1, 1], :r, false)
-p = Piece.new(b, [2, 2], :r, false)
+# p = Piece.new(b, [2, 2], :r, false)
 
 # Check board range (ok)
 # p p.board_range?
@@ -35,7 +41,7 @@ p = Piece.new(b, [2, 2], :r, false)
 # p p.find_possible_moves(p.move_diffs)
 
 # Empty? (error)
-p p.empty?
+# p p.empty?
 
 
 # move diffs (ok)
