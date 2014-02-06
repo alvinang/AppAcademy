@@ -39,7 +39,7 @@ class Board
     
     self.board.each_with_index do |row, row_index|
       row.each_with_index do |piece, col_index|
-        pieces_remaining << piece 
+        pieces_remaining << piece unless piece.nil?
       end
     end
     

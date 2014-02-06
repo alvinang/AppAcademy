@@ -1,13 +1,14 @@
 require './piece'
 require './board'
 require './game'
-require './human_player'
 
-b = Board.new
+# b = Board.new
+# p b.display_board
 
-p b.display_board
-b.
-
+game = Game.new
+game.board.display_board
+game.play
+game.board.display_board
 
 # test generate board (ok)
 

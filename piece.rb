@@ -71,7 +71,7 @@ class Piece
   
   # checks valid_move_seq?
   # then ,calls either perform_moves! or raises invalid move error
-  def perform_move move_sequence
+  def perform_moves move_sequence
     if valid_move_seq?(move_sequence)
       perform_moves!(move_sequence)
     else
@@ -82,7 +82,7 @@ class Piece
   
   # valid slide for one motion
   def valid_slide? target_position
-    return false if !self.board[target_position].empty?
+    return false if !self.board[target_position].nil?
     
     possible_moves = find_possible_moves(move_diffs)    
     possible_moves.include?(target_position) ? true : false
