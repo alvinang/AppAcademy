@@ -6,15 +6,8 @@ class Piece
     @board, @pos, @color, @king = board, pos, color, king
   end
   
-  def [](pos)
-    raise "Invalid move, position outside of range" if self.pos.board_range?
-    
-    x, y = pos
-    @board[y][x]    
-  end
-  
-  def board_range?
-    (0..7).cover?(self.pos[0]) && (0..7).cover?(self.pos[1])
+  def move_in_board_range?(move)
+    move.all?{ |coord| (0..7).cover?(coord) }
   end
   
   def king?
@@ -41,16 +34,28 @@ class Piece
   
   # return true/false
   # remove jumped piece from the board
-  def perform_jump(target_position)
-    # dup board
+  # target position can be a move sequence
+  def perform_jump(move_sequence)
+          
+    if valid_move_seq?(move_sequence)
+      self.board.perform_moves!(move_sequence) # perform_jump! for dup board
+    end  
+    false
+  end
+  
+  # call perform moves! on dup board
+  # if no error raised, true. else false.
+  def valid_move_seq?(move_sequence)
     dup_board = self.board.dup
-      
-    # perform_jump! for dup board
-    dup_board.perform_moves!(target_position)
     
-    # if all jumps valid, perform jump on board
-    self.board.perform_moves!(target_position)
-    
+    begin
+      if !perform_moves!(move_sequence)
+        raise WrongMoveError, 'Invalid jump!'
+      end
+    rescue WrongMoveError => e
+      puts e.message
+    end
+          
   end
   
   def perform_moves!(move_sequence)
@@ -60,7 +65,7 @@ class Piece
         self.board[current_position] = nil
         self.pos = target_position        
       else
-        raise 'Invalid jump!'
+        return false
       end
     end
     true
@@ -87,11 +92,6 @@ class Piece
         possible_moves << [self.pos[0] + row[1], self.pos[1] + row[0]]
       end
     end    
-  end
-  
-  def empty?
-    # need to check if would work
-    self.board[self.pos].nil?
   end
   
   RED_MOVE = [[1, 1], [-1, 1]]

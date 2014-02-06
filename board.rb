@@ -1,3 +1,6 @@
+class WrongMoveError < ArgumentError
+end
+
 class Board
   
   attr_reader :board
@@ -5,6 +8,11 @@ class Board
   def initialize(place_piece = true)
     @board = Array.new(8) { Array.new(8) }
     generate_board if place_piece == true
+  end
+  
+  def [](pos)
+    x, y = pos
+    @board[y][x]
   end
   
   # dup board to check mutliple jump
@@ -35,6 +43,11 @@ class Board
          end
        end
      end 
+  end
+  
+  def empty?(pos)
+    # need to check if would work
+    self[pos].nil?
   end
   
 end
