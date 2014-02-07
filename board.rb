@@ -14,6 +14,11 @@ class Board
     self.board[y][x]
   end
   
+  def []=(pos, value)
+    x, y = pos
+    self.board[y][x] = value
+  end
+  
   # dup board to check mutliple jump
   def dup
     dup_board = Board.new(false)
@@ -65,32 +70,37 @@ class Board
       end
     end 
   end
-  
-  def empty? pos
-    # need to check if would work
-    self[pos].nil?
-  end
 
-  def display_board
+  def display_board(cursor_position)
     white_pawn, white_king = " \u26AA", " \u2655"
     black_pawn, black_king = " \u26AB", " \u265B"
-    
+    counter = 0
+    print " "
+    (0..7).each { |n| print " #{n}" }
+    puts ""
     self.board.each_with_index do |row, row_index|
+      print counter
       row.each_with_index do |piece, col_index|
-        if piece.nil?
-          print " \u25A2" 
+        if [row_index, col_index] == cursor_position
+          print " x"
         else
-          if piece.color == :r && piece.king
-            print white_king
-          elsif piece.color == :r && !piece.king
-            print white_pawn
-          elsif piece.color == :b && piece.king
-            print black_king
-          elsif piece.color == :b && !piece.king
-            print black_pawn
+          if piece.nil?
+            print " \u25A2" 
+          else
+            if piece.color == :r && piece.king
+              print white_king
+            elsif piece.color == :r && !piece.king
+              print white_pawn
+            elsif piece.color == :b && piece.king
+              print black_king
+            elsif piece.color == :b && !piece.king
+              print black_pawn
+            end
           end
         end
+
       end
+      counter += 1
       puts ""
     end
     

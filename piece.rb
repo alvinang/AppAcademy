@@ -1,6 +1,7 @@
 class Piece
   
   attr_reader :pos, :color, :king, :board
+  attr_writer :pos
   
   def initialize(board, pos, color, king)
     @board, @pos, @color, @king = board, pos, color, king
@@ -16,7 +17,7 @@ class Piece
   
   def move! target_position
     self.board[target_position] = self
-    self.board[current_position] = nil
+    self.board[self.pos] = nil
     self.pos = target_position
     promote if maybe_promote?
   end
@@ -91,7 +92,7 @@ class Piece
   # take target position and see if its a valid jump
   # this will handle king/not king movement
   def valid_jump? target_position
-    return false unless self.board[target_position].empty?
+    return false unless self.board[target_position].nil?
     
     # check if target position is a valid position        
     diffs = self.move_diffs.collect { |el| el * 2 }    
