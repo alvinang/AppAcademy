@@ -1,6 +1,7 @@
+# encoding: UTF-8
 class Board
   
-  attr_reader :board
+  attr_reader :board, :current_piece
   
   def initialize place_piece = true
     @board = Array.new(8) { Array.new(8) }
@@ -69,16 +70,15 @@ class Board
     # need to check if would work
     self[pos].nil?
   end
-  
+
   def display_board
     white_pawn, white_king = " \u26AA", " \u2655"
     black_pawn, black_king = " \u26AB", " \u265B"
     
     self.board.each_with_index do |row, row_index|
       row.each_with_index do |piece, col_index|
-        # piece = self.board[row_index][col_index]
         if piece.nil?
-          print " \u2610" 
+          print " \u25A2" 
         else
           if piece.color == :r && piece.king
             print white_king
@@ -95,5 +95,39 @@ class Board
     end
     
   end
+
+  # for dispel  
+  # def display_board
+  #   white_pawn, white_king = "\u26AA", "\u2655"
+  #   black_pawn, black_king = "\u26AB", "\u265B"
+  #   
+  #   board_string = ""
+  #   
+  #   self.board.each_with_index do |row, row_index|
+  #     row.each_with_index do |piece, col_index|
+  #       # piece = self.board[row_index][col_index]
+  #       if piece.nil?
+  #         board_string << "\u25A2" 
+  #       else
+  #         if piece.color == :r && piece.king
+  #           board_string << white_king
+  #         elsif piece.color == :r && !piece.king
+  #           board_string << "X"
+  #         elsif piece.color == :b && piece.king
+  #           board_string << black_king
+  #         elsif piece.color == :b && !piece.king
+  #           board_string << 'X'
+  #         end
+  #       end
+  #     end
+  #     board_string << "\n"
+  #   end
+  #   
+  #   board_string
+  # end
+  # 
+  # def current_piece=(position)
+  #   @current_piece = @board[position.last][position.first]
+  # end
   
 end

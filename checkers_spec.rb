@@ -1,14 +1,14 @@
 require './piece'
 require './board'
 require './game'
+require 'dispel'
 
 # b = Board.new
 # p b.display_board
 
 game = Game.new
-game.board.display_board
 game.play
-game.board.display_board
+
 
 # test generate board (ok)
 
