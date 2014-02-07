@@ -5,8 +5,7 @@ class MoveError < ArgumentError
   def initialize(message, start_pos, end_pos, piece)
     super(message)
     @start_pos, @end_pos, @piece = start_pos, end_pos, piece
-  end
-
+    endd
 end
 
 class Board

@@ -3,10 +3,7 @@ class Employee
   attr_reader :salary
 
   def initialize(name, title, salary, boss)
-    @name = name
-    @title = title
-    @salary = salary
-    @boss = boss
+    @name, @title, @salary, @boss = name, title, salary, boss
     boss.add_employee(self) unless boss.nil?
   end
 
