@@ -1,7 +1,6 @@
 require_relative 'db_connection'
 require_relative '01_mass_object'
 require 'active_support/inflector'
-require_relative '00_attr_accessor_object.rb'
 
 class MassObject
   def self.parse_all(results)    
