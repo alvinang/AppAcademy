@@ -1,0 +1,10 @@
+alvin = Response.last
+chinese = AnswerChoice.find(2)
+
+# Alvin votes for Chinese
+r3 = Response.new(:user_id => 2, :answer_choice_id => 2)
+p r3.respondent_has_not_already_answered_question # => false
+
+# Alvin votes for Pizza Hut!, different question
+r4 = Response.new(:user_id => 2, :answer_choice_id => 5)
+p r4.respondent_has_not_already_answered_question # => true
