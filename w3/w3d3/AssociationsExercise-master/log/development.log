@@ -1,0 +1,165 @@
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCourses (20140212185115)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "prereq_id" integer, "instructor_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (3.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140212185115"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateEnrollments (20140212185142)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "enrollments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "course_id" integer, "student_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140212185142"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateUsers (20140212185208)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140212185208"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "prereq_id" integer, "instructor_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "enrollments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "course_id" integer, "student_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140212185208')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140212185115')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140212185142')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (27.8ms)[0m  INSERT INTO "users" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00], ["name", "CJ"], ["updated_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "users" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00], ["name", "Flarnie"], ["updated_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00], ["name", "Jeff"], ["updated_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00], ["name", "Georges St. Pierre"], ["updated_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00], ["name", "Ned"], ["updated_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "courses" ("created_at", "instructor_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00], ["instructor_id", 5], ["name", "Ruby 101"], ["updated_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "courses" ("created_at", "instructor_id", "name", "prereq_id", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00], ["instructor_id", 5], ["name", "Ruby 102"], ["prereq_id", 1], ["updated_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "enrollments" ("course_id", "created_at", "student_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["course_id", 1], ["created_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00], ["student_id", 3], ["updated_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "enrollments" ("course_id", "created_at", "student_id", "updated_at") VALUES (?, ?, ?, ?)  [["course_id", 1], ["created_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00], ["student_id", 4], ["updated_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "enrollments" ("course_id", "created_at", "student_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["course_id", 2], ["created_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00], ["student_id", 1], ["updated_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "enrollments" ("course_id", "created_at", "student_id", "updated_at") VALUES (?, ?, ?, ?)  [["course_id", 2], ["created_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00], ["student_id", 2], ["updated_at", Wed, 12 Feb 2014 18:56:08 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[36mUser Load (2.8ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mEnrollment Load (0.3ms)[0m  SELECT "enrollments".* FROM "enrollments" WHERE "enrollments"."user_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: enrollments.user_id: SELECT "enrollments".* FROM "enrollments"  WHERE "enrollments"."user_id" = ?
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mEnrollment Load (4.7ms)[0m  SELECT "enrollments".* FROM "enrollments" WHERE "enrollments"."student_id" = ?  [["student_id", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35mEnrollment Load (0.2ms)[0m  SELECT "enrollments".* FROM "enrollments" WHERE "enrollments"."student_id" = ?  [["student_id", 5]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "enrollments" WHERE "enrollments"."student_id" = ?  [["student_id", 5]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (32.7ms)[0m  INSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Wed, 12 Feb 2014 22:05:34 UTC +00:00], ["updated_at", Wed, 12 Feb 2014 22:05:34 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "enrollments" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Wed, 12 Feb 2014 22:07:32 UTC +00:00], ["updated_at", Wed, 12 Feb 2014 22:07:32 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mEnrollment Load (0.3ms)[0m  [1mSELECT "enrollments".* FROM "enrollments" ORDER BY "enrollments"."id" ASC LIMIT 1[0m
+  [1m[35mEnrollment Load (0.2ms)[0m  SELECT "enrollments".* FROM "enrollments" ORDER BY "enrollments"."id" ASC LIMIT 1
+  [1m[36mEnrollment Load (0.1ms)[0m  [1mSELECT "enrollments".* FROM "enrollments" ORDER BY "enrollments"."id" ASC LIMIT 1[0m
+  [1m[35mEnrollment Load (0.2ms)[0m  SELECT "enrollments".* FROM "enrollments" ORDER BY "enrollments"."id" ASC LIMIT 1
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY "courses"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mEnrollment Load (0.3ms)[0m  [1mSELECT "enrollments".* FROM "enrollments" WHERE "enrollments"."enrollment_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: enrollments.enrollment_id: SELECT "enrollments".* FROM "enrollments"  WHERE "enrollments"."enrollment_id" = ?
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mEnrollment Load (0.2ms)[0m  [1mSELECT "enrollments".* FROM "enrollments" WHERE "enrollments"."enrollment_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: enrollments.enrollment_id: SELECT "enrollments".* FROM "enrollments"  WHERE "enrollments"."enrollment_id" = ?
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mEnrollment Load (0.2ms)[0m  [1mSELECT "enrollments".* FROM "enrollments" WHERE "enrollments"."enrollment_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: enrollments.enrollment_id: SELECT "enrollments".* FROM "enrollments"  WHERE "enrollments"."enrollment_id" = ?
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mEnrollment Load (0.2ms)[0m  SELECT "enrollments".* FROM "enrollments" WHERE "enrollments"."enrollment_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: enrollments.enrollment_id: SELECT "enrollments".* FROM "enrollments"  WHERE "enrollments"."enrollment_id" = ?
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mEnrollment Load (0.2ms)[0m  SELECT "enrollments".* FROM "enrollments" WHERE "enrollments"."enrollment_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: enrollments.enrollment_id: SELECT "enrollments".* FROM "enrollments"  WHERE "enrollments"."enrollment_id" = ?
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mEnrollment Load (0.3ms)[0m  [1mSELECT "enrollments".* FROM "enrollments" WHERE "enrollments"."enrollment_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: enrollments.enrollment_id: SELECT "enrollments".* FROM "enrollments"  WHERE "enrollments"."enrollment_id" = ?
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mEnrollment Load (0.2ms)[0m  [1mSELECT "enrollments".* FROM "enrollments" WHERE "enrollments"."enrollment_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: enrollments.enrollment_id: SELECT "enrollments".* FROM "enrollments"  WHERE "enrollments"."enrollment_id" = ?
+  [1m[35mEnrollment Load (0.2ms)[0m  SELECT "enrollments".* FROM "enrollments" ORDER BY "enrollments"."id" ASC LIMIT 1
+  [1m[36mUser Load (3.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mEnrollment Load (0.2ms)[0m  [1mSELECT "enrollments".* FROM "enrollments" WHERE "enrollments"."enrollment_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: enrollments.enrollment_id: SELECT "enrollments".* FROM "enrollments"  WHERE "enrollments"."enrollment_id" = ?
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mEnrollment Load (0.2ms)[0m  [1mSELECT "enrollments".* FROM "enrollments" WHERE "enrollments"."enrollment_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: enrollments.enrollment_id: SELECT "enrollments".* FROM "enrollments"  WHERE "enrollments"."enrollment_id" = ?
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mEnrollment Load (0.2ms)[0m  [1mSELECT "enrollments".* FROM "enrollments" WHERE "enrollments"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mEnrollment Load (0.2ms)[0m  [1mSELECT "enrollments".* FROM "enrollments" ORDER BY "enrollments"."id" ASC LIMIT 1[0m
+  [1m[35mCourse Load (2.7ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY "courses"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mEnrollment Load (0.3ms)[0m  [1mSELECT "enrollments".* FROM "enrollments" WHERE "enrollments"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mCourse Load (0.3ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "enrollments" ON "courses"."id" = "enrollments"."course_id" WHERE "enrollments"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 1
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "enrollments" ON "courses"."id" = "enrollments"."course_id" WHERE "enrollments"."student_id" = ?[0m  [["student_id", 6]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" INNER JOIN "enrollments" ON "courses"."id" = "enrollments"."course_id" WHERE "enrollments"."student_id" = ?[0m  [["student_id", 2]]
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" ORDER BY "courses"."id" ASC LIMIT 1
+  [1m[36mEnrollment Load (0.2ms)[0m  [1mSELECT "enrollments".* FROM "enrollments" WHERE "enrollments"."enrollment_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: enrollments.enrollment_id: SELECT "enrollments".* FROM "enrollments"  WHERE "enrollments"."enrollment_id" = ?
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" ORDER BY "courses"."id" ASC LIMIT 1
+  [1m[36mEnrollment Load (0.2ms)[0m  [1mSELECT "enrollments".* FROM "enrollments" WHERE "enrollments"."course_id" = ?[0m  [["course_id", 1]]
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" ORDER BY "courses"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "enrollments" ON "users"."id" = "enrollments"."student_id" WHERE "enrollments"."course_id" = ?[0m  [["course_id", 1]]
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" ORDER BY "courses"."id" ASC LIMIT 1
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" ORDER BY "courses"."id" ASC LIMIT 1[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" ORDER BY "courses"."id" ASC LIMIT 1
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" ORDER BY "courses"."id" ASC LIMIT 1[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" ORDER BY "courses"."id" ASC LIMIT 1
+  [1m[36mCourse Load (0.3ms)[0m  [1mSELECT "courses".* FROM "courses" ORDER BY "courses"."id" ASC LIMIT 1[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" ORDER BY "courses"."id" ASC LIMIT 1
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."prereq_id" = ?[0m  [["prereq_id", 1]]
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."prereq_id" = ?[0m  [["prereq_id", 2]]
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY "courses"."id" ASC LIMIT 1  [["id", 5]]
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."id" = ? ORDER BY "courses"."id" ASC LIMIT 1  [["id", 5]]
