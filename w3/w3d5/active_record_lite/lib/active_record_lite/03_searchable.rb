@@ -7,11 +7,10 @@ module Searchable
     where_line = []
     params.keys.each do |key|
       where_line << "#{key.to_s} = ?"
-    end
-    
+    end    
     where_line = where_line.join(" AND ")    
-    params_val = params.values
     
+    params_val = params.values    
     searchable = DBConnection.execute(<<-SQL, params_val)
     SELECT
       *
