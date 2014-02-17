@@ -10,7 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass'
 
-group :development, :test do
+group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 end
