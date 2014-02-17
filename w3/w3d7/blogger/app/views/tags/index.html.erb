@@ -1,0 +1,10 @@
+<h1>These are our existing tags:</h1>
+
+<ul id="tags">
+  <% @tags.each do |tag| %>
+    <li>
+      <%= link_to tag.name, tag_path(tag) %>
+      <%= link_to 'delete', tag_path(tag), method: :delete, data: { confirm: "> Are you sure?"} %>
+    </li>
+  <% end %>
+</ul>

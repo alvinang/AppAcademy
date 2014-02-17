@@ -13,3 +13,6 @@ a3 = Article.create!(title: 'Title3', body: 'Test3')
 c1 = a1.comments.create!(author_name: 'Daffy', body: 'I am daffy')
 c2 = a1.comments.create!(author_name: 'Pluto', body: 'Wofff')
 c3 = a2.comments.create!(author_name: 'Bizarre', body: 'Warewolf?')
+
+t1 = a1.tags.create!(name: 'tag1')
+t2 = a1.tags.create!(name: 'tag2')
