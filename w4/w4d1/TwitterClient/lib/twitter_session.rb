@@ -8,7 +8,7 @@ class TwitterSession
 
 
   CONSUMER = OAuth::Consumer.new(
-    TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, :site => "https://twitter.com")
+    ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET'], :site => "https://twitter.com")
 
   TOKEN_FILE = "access_token.yml"
 
