@@ -4,12 +4,16 @@
   <input type="hidden" name="_method" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   
-  <label for="email">Email:</label>
-  <input type="email" name="user[email]" id="email">
+  <div class='form-group'>
+  	<label for='email'>Email: </label><br>
+  	<input type='text' name='user[email]' id='email' value="<%= @user.email %>">
+  </div>
+
+  <div class='form-group'>
+  	<label for='password'>Password: </label><br>
+  	<input type='password' name='user[password]' id='password'>
+  </div>
   
-  <label for="password">Password:</label>
-  <input type="password" name="user[password]" id="password">
-  
-  <input type="submit" value="Create User">
+  <input type="submit" value="Login" class='btn btn-primary'>
   
 </form>
