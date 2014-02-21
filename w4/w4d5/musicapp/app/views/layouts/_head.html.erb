@@ -1,0 +1,18 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "99Cats - Rent a cat today!" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "We strive to reduce the number of cats on the street. Own cats temporarily before making a full commitment!" %>">
+  <%= csrf_meta_tags %>
+
+  <!-- Meta -->
+  <%= favicon_link_tag '/assets/favicon.png' %>
+
+  <!-- Styles -->
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  
+  <!-- Javascripts -->
+  <%= javascript_include_tag "application" %>
+
+</head>

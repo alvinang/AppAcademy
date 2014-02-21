@@ -9,9 +9,9 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass'
-gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'bcrypt-ruby', '~> 3.1.2', require: 'bcrypt'
 
-group :developent do
+group :development do
   gem 'puma'
   gem 'better_errors'
   gem 'binding_of_caller'
