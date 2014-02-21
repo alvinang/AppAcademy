@@ -1,0 +1,51 @@
+<% action = @cat.persisted? ? cat_url(@cat) : cats_url %>
+
+<h1>Customize Yo' Cat!</h1>
+<form action="<%= action %>" method="post" role="form">
+	<input
+		name='authenticity_token'
+		type='hidden'
+		value='<%= form_authenticity_token %>'>
+	<input type="hidden" name="_method" value="<%= method %>">
+
+	<div class="form-group">
+		<label for="cat_name">Name</label><br>
+		<input type="text" name="cat[name]" id="cat_name" value="<%= @cat.name %>">
+	</div>
+
+	<div class="form-group">
+		<label for="cat_age">Age</label><br>
+		<input type="text" name="cat[age]" id="cat_age" value="<%= @cat.age %>">
+	</div>
+
+	<div class="form-group">
+		<div class="radio">
+			<% genders = {"M" => "male", "F" => "female"} %>
+			<% genders.each do |gender| %>
+			<% if (@cat.sex == gender.first) ? check = "checked" : check = "" %>
+			<label for="cat_sex_<%= gender.last %>">
+				<%= gender.last.capitalize %>
+				<input type="radio" name="cat[sex]" id="cat_sex_<%= gender.last %>" value="<%= gender.first %>" <%= check %>>
+			</label><br>
+			<% end %>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="cat_color">Coat color</label>
+		<select class="form-control" name="cat[color]" id="cat_color">
+			<option>--Choose Color--</option>
+			<% %w(calico black white brown green).each do |color| %>
+			<option value="<%=color%>" <%= @cat.color == color ? "selected" : "" %>><%= color.capitalize %></option>
+			<% end %>
+		</select>
+	</div>
+
+	<div class="form-group">
+		<label for="cat_birth_date">Birth Day (optional)</label><br>
+		<input type="date" name="cat[birth_date]" id="cat_birth_date" value="<%= @cat.birth_date %>">
+	</div>
+
+	<button type="submit" class="btn btn-primary">Submit Cat</button>
+</form>

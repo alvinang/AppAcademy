@@ -1,0 +1,11 @@
+<tr>
+	<form action="<%= cat_cat_rental_requests_url(@cat.id) %>" method="post" role="form">
+		<input
+			name='authenticity_token'
+			type='hidden'
+			value='<%= form_authenticity_token %>'>
+		<td><input type="date" name="cat_rental_request[start_date]" id="cat_rental_start"></td>
+		<td><input type="date" name="cat_rental_request[end_date]" id="cat_rental_end"></td>
+		<td><button type="submit" class="btn btn-success">Reserve</button></td>
+	</form>
+</tr>

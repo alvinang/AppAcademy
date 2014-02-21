@@ -1,0 +1,13 @@
+<% @cat.requests.sort_by {|x| x.start_date }.each do |request| %>
+<tr>
+	<td><%= request.start_date %></td>
+	<td><%= request.end_date %></td>
+	<td><%= request.status %></td>
+	<% if current_user.id == @cat.owner.id %>
+		<% if request.status != 'APPROVED' %>
+			<td><%=button_to 'Approve', approve_url(@cat.id, request.id), method: 'POST', class: 'btn btn-success'%></td>
+			<td><%=button_to 'Deny', deny_url(@cat.id, request.id), method: 'POST', class: 'btn btn-danger'%></td>
+		<% end%>
+	<% end%>
+</tr>
+<% end %>

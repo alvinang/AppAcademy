@@ -1,0 +1,19 @@
+<h1>Login Page<h1>
+
+<form action='<%= session_url %>' method='POST' role='form'>
+	<input
+		name='authenticity_token'
+		type='hidden'
+		value='<%= form_authenticity_token %>'>
+	<div class='form-group'>
+		<label for='user_name'>User: </label><br>
+		<input type='text' name='user[user_name]' id='user_name' value=''>
+	</div>
+
+	<div class='form-group'>
+		<label for='password'>Password: </label><br>
+		<input type='password' name='user[password]' id='password'>
+	</div>
+
+	<button type="submit" class="btn btn-primary">Login</button>
+</form>

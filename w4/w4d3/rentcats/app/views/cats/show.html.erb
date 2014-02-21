@@ -1,0 +1,21 @@
+<h1><%= @cat.name %></h1>
+<div>
+	<table class='table'>
+		<thead>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Birth Day</th>
+			<th>Color</th>
+			<th>Sex</th>
+		</thead>
+		<tbody>
+			<td><%= @cat.name %></td>
+			<td><%= @cat.age %></td>
+			<td><%= @cat.birth_date %></td>
+			<td><%= @cat.color %></td>
+			<td><%= @cat.sex %></td>
+		</tbody>
+	</table>
+</div>
+
+<%= render partial: "cat_rental_requests/requests" %>

@@ -1,0 +1,15 @@
+<h1>CATS!!</h1><br>
+<table class="table table-striped table-hover">
+  <tbody>
+    <% @cats.each do |cat| %>
+    <tr>
+      <td><%= link_to cat.name, cat_url(cat), class: 'lead' %><td>
+				<% if current_user.id == cat.owner.id%>
+		      <td><%= button_to 'BBQ', cat_url(cat), method: :delete, class: 'btn btn-danger' %></td>
+					<% else %>
+					<td></td>
+				<% end%>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

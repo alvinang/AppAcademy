@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<%= render partial: 'layouts/head' %>
+<body style="padding-top:50px;">
+  <%= render partial: 'layouts/navbar' %>
+  <div class = "container">
+
+    <%= render partial: 'layouts/errors' %>
+
+    <% if signed_in? %>
+    <ul>
+      <li>Signed in as: <%= current_user.user_name %></li>
+      <li><%= button_to "Sign Out", session_url, :method => :delete %></li>
+    </ul>
+    <% else %>
+    <%= link_to "Sign In", new_session_url %> or
+    <%= link_to "Sign up", new_user_url %>
+    <% end %>
+
+
+    <%= yield %>
+
+  </div>
+</body>
+</html>

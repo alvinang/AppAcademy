@@ -1,0 +1,22 @@
+<% if flash[:errors] %>
+
+  <% flash[:errors].each do |error| %>
+    <div class="alert alert-danger" style="border-radius:0;">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= content_tag :div, error, :id => "flash_danger" %>
+    </div>
+  <% end %>
+
+<% end %>
+
+
+
+
+<!-- <% if flash[:errors] %>
+<ul>
+  <% flash[:errors].each do |error| %>
+  <li><%#= error %></li>
+  <% end %>
+</ul>
+<br>
+<% end %> -->
