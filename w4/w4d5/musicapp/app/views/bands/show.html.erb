@@ -8,10 +8,11 @@
     </tr>
   </thead>
   <tbody>
-  <% @band.albums.each do |album| %>
-  <tr>
-    <td><%= link_to album.label, album_url(album) %></td>
-    <td><%= button_to 'edit', edit_album_url(album), class: 'btn btn-success' %></td>
-  <tr>
-  <% end %>
-</ul>
+    <% @band.albums.each do |album| %>
+    <tr>
+      <td><%= link_to album.label, album_url(album) %></td>
+      <td><%= button_to 'edit', edit_album_url(album), class: 'btn btn-success' %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

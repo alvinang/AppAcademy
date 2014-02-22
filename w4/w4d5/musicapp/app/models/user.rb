@@ -19,6 +19,13 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
   
   before_validation :ensure_session_token
+    
+  has_many    :notes,
+              class_name: 'Note',
+              foreign_key: :user_id,
+              primary_key: :id  
+              
+    
   
   def self.generate_session_token
     SecureRandom.urlsafe_base64(16)

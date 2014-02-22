@@ -8,13 +8,14 @@
     </tr>
   </thead>
   <tbody>
-  <% @album.tracks.each do |track| %>
-  <tr>
-    <td><%= link_to track.title, track_url(track) %></td>
-    <td><%= button_to 'edit', edit_track_url(track), class: 'btn btn-success' %></td>
-  <tr>
-  <% end %>
-</ul>
+    <% @album.tracks.each do |track| %>
+    <tr>
+      <td><%= link_to track.title, track_url(track) %></td>
+      <td><%= button_to 'edit', edit_track_url(track), class: 'btn btn-success' %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'See Band', band_url(params[:id]) %>
 <%= button_to 'Create New Tracks', new_album_track_url(params[:id]) %>

@@ -14,7 +14,9 @@ class TracksController < ApplicationController
   end
   
   def destroy
-    
+    @track = Track.find_by_id(params[:id])
+    @track.delete
+    redirect_to :new
   end
   
   def edit

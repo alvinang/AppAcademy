@@ -11,6 +11,10 @@ Musicapp::Application.routes.draw do
   resources :albums, only: [:edit, :destroy, :show, :update] do
     resources :tracks, only: [:create, :index, :new]
   end
-  
-  resources :tracks, only: [:edit, :destroy, :show, :update]
+  resources :tracks, only: [:show] do
+    resources :notes, only: [:create, :new]
+  end
+    
+  resources :tracks, only: [:edit, :destroy, :update]
+
 end

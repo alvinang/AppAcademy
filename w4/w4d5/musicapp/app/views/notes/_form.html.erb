@@ -1,0 +1,11 @@
+<form action="<%= track_notes_url(params[:id]) %>" method="POST">
+  
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+  
+  <div class='form-group'>
+    <label for="body">Note</label>
+    <textarea class="form-control" rows="3" name="note[body]" id="body"></textarea>
+  </div>
+  
+  <input type="submit" value="Add Note" class="btn btn-primary">
+</form>
