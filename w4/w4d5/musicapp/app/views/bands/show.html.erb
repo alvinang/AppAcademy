@@ -1,0 +1,17 @@
+<h1>Band's show page for <%= @band.name %></h1>
+<br>
+<table class='table table-stripped table-hover'>
+  <thead>
+    <tr>
+      <th>Band Name</th>
+      <th>Edit Band's Album'</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @band.albums.each do |album| %>
+  <tr>
+    <td><%= link_to album.label, album_url(album) %></td>
+    <td><%= button_to 'edit', edit_album_url(album), class: 'btn btn-success' %></td>
+  <tr>
+  <% end %>
+</ul>

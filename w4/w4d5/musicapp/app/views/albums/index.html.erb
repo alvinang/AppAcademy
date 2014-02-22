@@ -1,0 +1,19 @@
+<h1>All Album - Album's Index Page</h1>
+<br>
+<table class='table table-stripped table-hover'>
+  <thead>
+    <tr>
+      <th>Album Name</th>
+      <th>Edit Album</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @albums.each do |album| %>
+  <tr>
+    <td><%= link_to album.label, album_url(album) %></td>
+    <td><%= link_to 'edit', edit_album_url(album), class: 'btn btn-success' %></td>
+  <tr>
+  <% end %>
+</ul>
+
+<%= button_to 'Create New Album', new_band_album_url(params[:band_id]) %>

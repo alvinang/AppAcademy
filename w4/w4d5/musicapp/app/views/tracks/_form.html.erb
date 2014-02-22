@@ -1,0 +1,36 @@
+<% title = (method == :new ? "Add New Track" : "Edit Track Info")  %>
+<% action = (method == :new ? album_tracks_url : album_url(@album)) %>
+<% form_method = (method == :new ? "POST" : "PATCH") %>
+<% button_value = (method == :new ? "Add Track" : "Update Track") %>
+
+
+<h1><%= title %></h1>
+<h3>For Album: <%= Album.find_by_id([params[:album_id]]).label %></h3>
+
+<form action="<%= action %>" method="POST">
+  <input type="hidden" name="_method" value="<%= form_method %>">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  
+  <div class='form-group'>
+  	<label for='title'>Title: </label><br>
+  	<input type='text' name='track[title]' id='title' value="<%= @track.title %>">
+  </div>
+  
+  <div class="form-group">
+    <strong>Track Bonus?</strong><br>
+    <% ["bonus", "regular"].each do |bonus| %>
+    <label for="bonus_<%= bonus %>">
+      <input type="radio" name="track[bonus]" id="bonus_<%= bonus %>" value="<%= bonus %>"> <%= bonus.capitalize %>
+    </label><br>
+    <% end %>
+    
+  </div>
+  
+  <div class='form-group'>
+  	<label for='lyris'>Lyrics: </label><br>
+  	<textarea class="form-control" rows="8" name='track[lyrics]' id='lyrics' value="<%= @track.lyrics %>"></textarea>
+  </div>
+  
+  <input type="submit" value="<%= button_value %>" class='btn btn-primary'>
+  
+</form>

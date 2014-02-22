@@ -4,4 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   include UsersHelper
+  include AlbumsHelper
+  include TracksHelper
 end

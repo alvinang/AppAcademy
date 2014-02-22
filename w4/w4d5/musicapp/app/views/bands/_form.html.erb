@@ -1,0 +1,19 @@
+<% title = (method == :new ? "Add New Band" : "Edit Band Info")  %>
+<% action = (method == :new ? bands_url : band_url(@band)) %>
+<% form_method = (method == :new ? "POST" : "PATCH") %>
+<% button_value = (method == :new ? "Add Band" : "Update Band") %>
+
+<h1><%= title %></h1>
+
+<form action="<%= action %>" method="POST">
+  <input type="hidden" name="_method" value="<%= form_method %>">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  
+  <div class='form-group'>
+  	<label for='name'>Name: </label><br>
+  	<input type='text' name='band[name]' id='name' value="<%= @band.name %>">
+  </div>
+  
+  <input type="submit" value="<%= button_value %>" class='btn btn-primary'>
+  
+</form>

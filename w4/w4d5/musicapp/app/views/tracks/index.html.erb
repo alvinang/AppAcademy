@@ -1,0 +1,19 @@
+<h1>All Tracks - Track's Index Page</h1>
+<br>
+<table class='table table-stripped table-hover'>
+  <thead>
+    <tr>
+      <th>Track Name</th>
+      <th>Edit Track</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @tracks.each do |track| %>
+  <tr>
+    <td><%= link_to track.title, track_url(track) %></td>
+    <td><%= link_to 'edit', edit_track_url(track), class: 'btn btn-success' %></td>
+  <tr>
+  <% end %>
+</ul>
+
+<%= link_to 'Create New Track', new_album_track_url(params[:album_id]) %>

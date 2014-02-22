@@ -1,0 +1,28 @@
+<% title = (method == :new ? "Add New Album" : "Edit Track Album")  %>
+<% action = (method == :new ? band_albums_url(params[:band_id]) : album_url(@album)) %>
+<% form_method = (method == :new ? "POST" : "PATCH") %>
+<% button_value = (method == :new ? "Add Album" : "Update Album") %>
+
+<h1><%= title %></h1>
+
+<form action="<%= action %>" method="POST">
+  <input type="hidden" name="_method" value="<%= form_method %>">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  
+  <div class='form-group'>
+  	<label for='label'>Album Name: </label><br>
+  	<input type='text' name='album[label]' id='label' value="<%= @album.label %>">
+  </div>
+  
+  <div class="form-group">
+    <label>Recording Location:</label><br>
+    <% ["live", "studio"].each do |recording| %>        
+    <input type="radio" name="album[recording]" id="recording_<%= recording %>"  value="<%= recording %>">
+    <label for="recording_<%= recording %>"><%= recording.capitalize %></label>
+    <br>
+    <% end %>
+  </div>
+  
+  <input type="submit" value="<%= button_value %>" class='btn btn-primary'>
+  
+</form>

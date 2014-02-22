@@ -1,1 +1,1 @@
-//= boostrap
+//= require bootstrap/alert

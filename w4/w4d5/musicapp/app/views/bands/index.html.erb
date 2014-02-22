@@ -1,0 +1,17 @@
+<h1>All Band - Band's Index Page</h1>
+<br>
+<table class='table table-stripped table-hover'>
+  <thead>
+    <tr>
+      <th>Band Name</th>
+      <th>Edit Band</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @bands.each do |band| %>
+  <tr>
+    <td><%= link_to band.name, band_url(band) %></td>
+    <td><%= link_to 'edit', edit_band_url(band), class: 'btn btn-success' %></td>
+  <tr>
+  <% end %>
+</ul>
