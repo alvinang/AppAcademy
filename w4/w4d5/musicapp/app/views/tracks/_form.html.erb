@@ -1,11 +1,10 @@
 <% title = (method == :new ? "Add New Track" : "Edit Track Info")  %>
-<% action = (method == :new ? album_tracks_url : album_url(@album)) %>
+<% action = (method == :new ? album_tracks_url : track_url(params[:id])) %>
 <% form_method = (method == :new ? "POST" : "PATCH") %>
 <% button_value = (method == :new ? "Add Track" : "Update Track") %>
 
 
 <h1><%= title %></h1>
-<h3>For Album: <%= Album.find_by_id([params[:album_id]]).label %></h3>
 
 <form action="<%= action %>" method="POST">
   <input type="hidden" name="_method" value="<%= form_method %>">

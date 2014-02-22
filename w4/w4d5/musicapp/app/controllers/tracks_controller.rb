@@ -5,6 +5,7 @@ class TracksController < ApplicationController
     @track.album_id = params[:album_id]
     
     if @track.save
+      flash[:notice] = "Great work! You saved a track!"
       redirect_to track_url(@track)
     else
       flash.now[:errors] = @track.errors.full_messages
@@ -17,7 +18,8 @@ class TracksController < ApplicationController
   end
   
   def edit
-    
+    @track = Track.find_by_id(params[:id])
+    render :edit
   end
   
   def index
@@ -36,7 +38,14 @@ class TracksController < ApplicationController
   end
   
   def update
+    @track = Track.find_by_id(params[:id])
     
+    if @track.update_attributes(track_params)
+      redirect_to track_url(@track)
+    else
+      flash.now[:errors] = @track.errors.full_messages
+      render :edit
+    end
   end
   
   private

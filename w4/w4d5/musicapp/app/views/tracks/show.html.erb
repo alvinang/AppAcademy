@@ -1,1 +1,22 @@
-<h1>This is the track's show page for <%= @track.title %></h1>
+<h1>Track's show page for <%= @track.title %></h1>
+<br>
+<table class='table table-stripped table-hover'>
+  <thead>
+    <tr>
+      <th>Album Name</th>
+      <th>Bonus?</th>
+      <th>Lyrics</th>
+      <th>Edit Track</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= @track.title %></td>
+    <td><%= @track.bonus %></td>
+    <td><%= @track.lyrics %></td>    
+    <td><%= link_to 'edit', edit_track_url(@track), class: 'btn btn-success' %></td>
+  <tr>
+</ul>
+
+<%= link_to 'See Band', band_url(@track.band) %><br>
+<%= link_to 'See Album', album_url(@track.album) %>
