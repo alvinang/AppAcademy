@@ -16,5 +16,6 @@ Musicapp::Application.routes.draw do
   end
     
   resources :tracks, only: [:edit, :destroy, :update]
+  post '/user/:id/activate', to: 'users#active', as: 'activate'
 
 end
