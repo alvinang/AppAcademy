@@ -1,11 +1,12 @@
 class AlbumsController < ApplicationController
   
+  before_action :view_if_logged_in
+  
   def create
     @album = Album.new(album_params)    
     @album.band_id = params[:band_id]
     
     if @album.save
-      flash[:notice] = "Great work! You saved an album!"
       redirect_to album_url(@album)
     else
       flash.now[:errors] = @album.errors.full_messages

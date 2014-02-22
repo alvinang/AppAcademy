@@ -1,5 +1,11 @@
 <ul class="list-group">
   <% @track.notes.each do |note| %>
-  <li class="list-group-item"><%= note.body %></li>
+  <li class="list-group-item">
+    <blockquote>
+      <p><%= note.body%></p>
+      <footer>by <%= note.user.email %></footer>    
+    </blockquote>   
+    <%= button_to 'delete', track_note_url(note.track_id, note.id), method: :delete %>
+  </li>
   <% end %>
 </ul>

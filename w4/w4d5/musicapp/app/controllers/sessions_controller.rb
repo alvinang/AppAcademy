@@ -1,4 +1,6 @@
-class SessionsController < ApplicationController
+class SessionsController < ApplicationController  
+  
+  before_action :view_if_logged_in, only: [:destroy]
   
   def new
     @user = User.new
@@ -13,7 +15,7 @@ class SessionsController < ApplicationController
     
     if @user
       login!(@user)
-      redirect_to user_url(@user)
+      redirect_to bands_url
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new

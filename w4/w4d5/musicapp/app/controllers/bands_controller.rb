@@ -1,5 +1,7 @@
 class BandsController < ApplicationController
   
+  before_action :view_if_logged_in
+  
   def create
     @band = Band.new(band_params)
     

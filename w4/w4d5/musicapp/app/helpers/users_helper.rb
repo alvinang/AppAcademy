@@ -19,4 +19,11 @@ module UsersHelper
     user.reset_session_token!
   end
   
+  def view_if_logged_in
+    unless logged_in?
+      flash[:errors] = "Need to login to access"
+      redirect_to root_url      
+    end
+  end
+  
 end

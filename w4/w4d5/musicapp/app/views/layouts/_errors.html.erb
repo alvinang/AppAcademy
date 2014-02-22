@@ -1,5 +1,10 @@
-<% if flash[:errors] %>
-
+<% if flash[:errors].nil? %>
+<% elsif flash[:errors].class == String %>
+  <div class="alert alert-success" style="border-radius:0;">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <%= content_tag :div, flash[:errors], :id => "flash_notice" %>
+  </div>
+<% else %>
   <% flash[:errors].each do |error| %>
     <div class="alert alert-danger" style="border-radius:0;">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

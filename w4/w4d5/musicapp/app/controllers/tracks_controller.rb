@@ -1,11 +1,12 @@
 class TracksController < ApplicationController
   
+  before_action :view_if_logged_in
+  
   def create
     @track = Track.new(track_params)
     @track.album_id = params[:album_id]
     
     if @track.save
-      flash[:notice] = "Great work! You saved a track!"
       redirect_to track_url(@track)
     else
       flash.now[:errors] = @track.errors.full_messages
