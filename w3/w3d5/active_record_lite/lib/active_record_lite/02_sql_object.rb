@@ -42,7 +42,7 @@ class SQLObject < MassObject
 
   def self.all
     all_data = DBConnection.execute(<<-SQL)
-    SELECT *
+    SELECT #{ table_name }.*
     FROM #{self.table_name}
     SQL
     
@@ -53,7 +53,7 @@ class SQLObject < MassObject
     
     find_by_id = DBConnection.execute(<<-SQL, id)
       SELECT 
-        *
+      #{table_name}.*
       FROM #{self.table_name}
       WHERE #{self.table_name}.id = ?
       LIMIT 1
@@ -93,13 +93,8 @@ class SQLObject < MassObject
   end
 
   def update
-    set_line = []
-    @attributes.each do |attr_name, value|
-      set_line << "#{attr_name} = ?"
-    end
-    
-    set_line = set_line.join(", ")  
-    col_names = self.attributes.keys.join(", ")
+    set_line = self.class.columns
+        .map { |attr| "#{ attr } = ?"}.join(", ")
     
     DBConnection.execute(<<-SQL, *attribute_values)
     UPDATE
