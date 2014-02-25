@@ -1,0 +1,17 @@
+<h1>Sign In</h1>
+<form action="<%= session_url %>" method="post">
+  <%= auth_token %>
+  <label>
+    Email
+    <input type="text" id="email" name="user[email]" value="">
+  </label>
+
+  <label>
+    Password
+    <input type="password" id="password" name="user[password]">
+  </label>
+
+  <input type="submit" value="Log In">
+</form>
+
+<%= link_to "Forgot my Password", session_password_reset_url %>

@@ -1,0 +1,41 @@
+<h1>New Post</h1>
+
+<form action="<%= posts_url %>" method="post">
+  <%= auth_token %>
+    <label>
+      Post Title
+    <input type="text" name="post[title]" id="title">
+  </label>
+
+  <label>
+    Post Body
+  <textarea name="post[body]" id="name"></textarea>
+</label>
+<br>
+
+  <% @post.links.each_with_index do |link, i| %>
+  <label>
+    TITLE
+    <input type="text" name="link[<%= i %>][title]" id="">
+  </label>
+
+    <label>
+      URL
+      <input type="text" name="link[<%= i %>][url]" id="">
+    </label>
+  <br>
+
+
+  <% end %>
+
+  <% current_user.friend_circles.each do |circle| %>
+    <input type="checkbox"
+           name="friend_circle_post[friend_circle_ids][]"
+           value="<%= circle.id %>">
+           <%= circle.name %>
+  <% end %>
+
+  <input type="submit" value="Create Group">
+
+
+</form>

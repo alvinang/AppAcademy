@@ -1,0 +1,15 @@
+<h1>Sign Up</h1>
+<form action="<%= users_url %>" method="post">
+  <%= auth_token %>
+  <label>
+    Email
+    <input type="text" id="email" name="user[email]" value="<%= @user.email %>">
+  </label>
+
+  <label>
+    Password
+    <input type="password" id="password" name="user[password]">
+  </label>
+
+  <input type="submit" value="Create User">
+</form>
