@@ -1,4 +1,10 @@
-# Using the specs
+#Rails Lite
+This is an extremely light version of rails with controller base, params, router and sessions showcasing the basic utility of rails. 
+
+For a full overview of Rail's sourcecode, check this out: 
+(Rails)[https://github.com/rails/rails]
+
+## Using the specs
 Some specs have been written to guide you towards the lite :) There are rspec
 specs in the `spec` directory and ruby code for you to test with in the `test`
 directory.
