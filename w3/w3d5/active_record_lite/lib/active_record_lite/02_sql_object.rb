@@ -94,7 +94,7 @@ class SQLObject < MassObject
 
   def update
     set_line = self.class.columns
-        .map { |attr| "#{ attr } = ?"}.join(", ")
+        .map { |attr| "#{ attr } = ?"}.join(", ")d
     
     DBConnection.execute(<<-SQL, *attribute_values)
     UPDATE
