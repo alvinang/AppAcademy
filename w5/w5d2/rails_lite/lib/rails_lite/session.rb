@@ -4,7 +4,7 @@ require 'webrick'
 class Session
   # find the cookie for this app
   # deserialize the cookie into a hash
-  def initialize(req)
+  def initialize(req, flash = {})
     found = ''
     req.cookies.each do |cookie|
       found = cookie.value if cookie.name == '_rails_lite_app'

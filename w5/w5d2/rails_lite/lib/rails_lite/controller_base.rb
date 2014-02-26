@@ -9,9 +9,9 @@ class ControllerBase
 
   # setup the controller
   def initialize(req, res, route_params = {})
-    @req, @res, @routes_params = req, res, route_params
+    @req, @res, @route_params = req, res, route_params
     @already_built_response = false
-    @params = Params.new(@req, @route_params)
+    @params = Params.new(@req, @route_params)    
   end
 
   # populate the response with content
@@ -58,4 +58,12 @@ class ControllerBase
     self.send(name)
     self.render(name) unless already_rendered? 
   end
+end
+
+class Flash
+  
+  def initialize
+  
+  end
+  
 end
