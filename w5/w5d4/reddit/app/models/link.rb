@@ -10,19 +10,19 @@
 #
 
 class Link < ActiveRecord::Base
-  validates :title, :url, presence: true
+  validates :title, :url, :user, presence: true
 
   has_many :link_subs
   has_many :comments
-  has_many :subs , through: :link_subs #, source: :sub
+  has_many :subs , through: :link_subs, source: :sub
 
   def comments_by_parent_id
-    hash = Hash.new() { |h,k| h[k] = [] }
+    comments_by_parents = Hash.new { |h,k| h[k] = [] }
 
     self.comments.each do |comment|
         hash[comment.parent_comment_id] << comment
     end
-    hash
+    comments_by_parents
   end
 
 end

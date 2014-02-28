@@ -1,12 +1,12 @@
 Reddit::Application.routes.draw do
+  root to: "sessions#new"
+  
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
-  resources :subs do
-    resources :links, except: [:index, :show]
-  end
+  resources :subs 
 
   resources :links, only: [:show] do
-    resources :comments
+    resources :comments, only: [:create, :new, :show]
   end
 
 end

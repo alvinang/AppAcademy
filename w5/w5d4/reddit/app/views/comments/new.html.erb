@@ -1,0 +1,11 @@
+<form action="<%= link_comments_url(params[:link_id]) %>" method="POST">
+  <%= form_token %>
+  
+  <textarea name="comment[body]"></textarea><br>
+  <input type="submit">
+  
+  <% if params[:parent_comment_id] %>
+    <input type="hidden" name="comment[parent_comment_id]" value="<%= params[:parent_comment_id] %>">
+  <% end %>
+  
+</form>

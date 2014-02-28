@@ -1,0 +1,11 @@
+<%= @comment.body %> by <%= @comment.user.name %><br><br>
+
+Reply to this comment:
+<form action="<%= link_comments_url(params[:link_id]) %>" method="POST">
+  <%= form_token %>
+  
+  <textarea name="comment[body]"></textarea><br>
+  <input type="submit">
+  
+  <input type="hidden" name="comment[parent_comment_id]" value="<%= params[:id] %>">
+</form>

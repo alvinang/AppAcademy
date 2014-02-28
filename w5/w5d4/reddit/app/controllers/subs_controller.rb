@@ -9,19 +9,26 @@ class SubsController < ApplicationController
 
   def new
     @sub = Sub.new
-     5.times { @sub.links.build }
+     5.times { @sub.links.new }
     render :new
   end
 
   def create
-    @sub = Sub.new(subs_params)
+    @sub = current_user.subs.new(sub_params)
+    
+    filled_out_links = params[:link].values.reject do |value|
+      value[:url].empty? || value[:title].empty?
+    end
 
-    @sub.moderator_id = current_user.id
+    filled_out_links.each do |link_params|
+      @sub.links.new(link_params.merge(moderator_id: current_user.id))
+    end
+    
     if @sub.save
-      @sub.links.create(link_params)
       redirect_to sub_url(@sub)
     else
       flash.now[:errors] = @sub.errors.full_messages
+      (5-@sub.links.length).times { @sub.links.new }
       render :new
     end
   end
@@ -33,8 +40,8 @@ class SubsController < ApplicationController
 
   def update
     @sub = Sub.find(params[:id])
-    @sub.update_attributes(subs_params)
-    if @sub
+    
+    if @sub.update_attributes(subs_params)
       redirect_to sub_url(@sub)
     else
       flash.now[:errors] = @sub.errors.full_messages
@@ -54,8 +61,8 @@ class SubsController < ApplicationController
   end
 
   private
-  def subs_params
-    params.require(:sub).permit(:name)
+  def sub_params
+    params.require(:sub).permit(:name, :links => [:url, :title, :body])
 
   end
 
@@ -64,11 +71,11 @@ class SubsController < ApplicationController
     redirect_to subs_url unless current_user.id == @sub.moderator_id
   end
 
-  def link_params
-    params.permit(:link => [:title, :url])
-      .require(:link)
-      .values
-      .reject { |data| data.values.all?(&:blank?) }
-  end
+  # def link_params
+  #   params.permit(:link => [:title, :url])
+  #     .require(:link)
+  #     .values
+  #     .reject { |data| data.values.all?(&:blank?) }
+  # end
 
 end

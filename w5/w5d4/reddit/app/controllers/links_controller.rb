@@ -6,25 +6,29 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.new(linger_params)
-    sub_id = params[:sub_id]
+    @link = current_user.links.new(link_params)
+
     if @link.save
-      LinkSub.create!(sub_id: sub_id, link_id: @link.id)
       redirect_to :back
-      #redirect_to sub_urls #(sub_id)
     else
-      flash[:errors] = @link.errors.full_messages
-      redirect_to :back
+      @subs = Sub.all
+      flash.now[:errors] = @link.errors.full_messages
+      render :new
     end
   end
 
-  # we have to figure this sub can't be blank thing...........................................nest the route into subs so we can get the subway_ids
-
   def edit
+    @subs = Sub.all
+    render :edit
   end
 
   def update
-
+    if @link.update_attributes(link_params)
+      redirect_to @link
+    else
+      flash.now[:errors] = @link.errors.full_messages
+      render :edit
+    end  
   end
 
   def show
@@ -37,8 +41,8 @@ class LinksController < ApplicationController
   end
 
   private
-  def linger_params
-    params.require(:link).permit(:title, :url)
+  def link_params
+    params.require(:link).permit(:title, :url, :body, :user_id, :sub_ids)
   end
 
 end

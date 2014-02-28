@@ -1,0 +1,10 @@
+
+<ul>
+  <li><%= comment.body %>
+</ul>
+
+<ul>
+  <% comments_by_parent[comment.id].each do |child_comment| %>
+  <li><%= comment_partial(child_comment, comments_by_parent) %></li>
+  <% end %>
+</ul>

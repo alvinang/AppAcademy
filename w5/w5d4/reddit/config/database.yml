@@ -6,7 +6,7 @@
 development:
   adapter: postgresql
   database: reddit_dev
-  username: appacademy
+  username: alvinang
   host: localhost
   pool: 5
   timeout: 5000
@@ -17,7 +17,7 @@ development:
 test:
   adapter: postgresql
   database: reddit_test
-  username: appacademy
+  username: alvinang
   host: localhost
   pool: 5
   timeout: 5000
