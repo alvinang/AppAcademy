@@ -1,0 +1,28 @@
+<%= @sub.name %>
+<% if current_user.id == @sub.moderator_id %>
+  <%= button_to "Delete Sub", sub_url(@sub), method: :delete %>
+<% end %>
+
+<h2> Links </h2>
+
+<% @sub.links.each do |link| %>
+  <%= link_to link.title, link_url(link) %>
+  <br>
+<% end %>
+
+
+  <p><input type="submit" value="Continue &rarr;"></p>
+</form>
+
+<h2> Add Link </h2>
+<form action="<%= sub_links_url(@sub) %>" method="post" accept-charset="utf-8">
+  <%= form_tag %>
+
+  <label for="title">Title</label>
+  <input type="text" name="link[title]" id="title">
+
+  <label for="url">URL</label>
+  <input type="text" name="link[url]" value="" id="url">
+
+  <p><input type="submit" value="Add Link"></p>
+</form>

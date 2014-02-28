@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reddit</title>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% if signed_in? %>
+<%= current_user.username %>
+<%= button_to "Sign Out", session_url, method: :delete %>
+<% else %>
+<%= link_to "Sign In", new_session_url %>
+<%= link_to "Sign Up", new_user_url %>
+<% end %>
+
+<%= render partial: 'layouts/errors' %>
+
+<%= yield %>
+
+</body>
+</html>

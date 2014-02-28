@@ -1,0 +1,27 @@
+<% action = @sub.persisted? ? sub_url(@sub) : subs_url %>
+<% post_or_patch = @sub.persisted? ? "patch" : "post"%>
+<% submit = @sub.persisted? ? "Update Sub" : "Create Sub" %>
+
+<form action="<%= action %>" method="post" accept-charset="utf-8">
+  <%= form_token %>
+  <input type="hidden" name="_method" value="<%= post_or_patch %>">
+
+  <p>
+    <label for="name">Name</label>
+    <input type="text" name="sub[name]" value="<%= @sub.name%>" id="name">
+  </p>
+
+  <% @sub.links.each_with_index do |link, index| %>
+  <p>
+    <label for="title">Title</label>
+    <input type="text" name="link[<%= index %>][title]" value="" id="title">
+  </p>
+
+  <p>
+    <label for="url">URL</label>
+    <input type="text" name="link[<%= index %>][url]" value="" id="url">
+  </p>
+  <% end %>
+
+  <p><input type="submit" value="<%= submit %>"></p>
+</form>

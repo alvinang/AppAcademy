@@ -1,0 +1,6 @@
+<h1><%= @link.title %> Show Page</h1>
+
+
+<% @comments.keys.each do |key| %>
+  <%= @comments[key].each do |children_comment| %>
+    <%= render partial: 'links/comment', locals: {comment: children_comment} %>
