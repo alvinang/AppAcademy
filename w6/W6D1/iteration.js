@@ -8,10 +8,12 @@ var bubbleSort = function(array) {
         var left = array[i];
         array[i] = array[i + 1];
         array[i+1] = left;
+        
         sorted = false;
       }
     }
   }
+  
   return array;
 }
 
@@ -19,11 +21,13 @@ var bubbleSort = function(array) {
 
 var substrings = function(string) {
   var result = [];
-  for(var i=0;i<string.length;i++) {
-    for(var j=i+1;j<=string.length;j++) {
-      result.push(string.substring(i,j))
+  
+  for (var i = 0; i < string.length; i++) {
+    for (var j = i + 1; j <= string.length; j++) {
+      result.push(string.substring(i,j));
     }
   }
+  
   return result;
 }
 

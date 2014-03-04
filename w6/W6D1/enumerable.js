@@ -1,17 +1,19 @@
-var multiples = function(arr){
+Array.prototype.multiples = function(){
   var result = [];
-  for(var i = 0; i < arr.length; i++){
-    result.push(arr[i] * 2);
+  
+  for(var i = 0; i < this.length; i++){
+    result.push(this[i] * 2);
   }
+  
   return result;
 }
-
 
 var myEach = function(array, func) {
   for(var i = 0; i < array.length; i++) {
     func(array[i]);
     // console.log(func(array[i]));
   }
+  
   return array;
 }
 
@@ -19,6 +21,7 @@ var myEach = function(array, func) {
 
 var myMap = function(array, mapFunc) {
   var result = [];
+  
   var insideFunction = function(el) { result.push(mapFunc(el)) }
   myEach(array, insideFunction )
   return result;
@@ -31,6 +34,16 @@ var myInject = function(array, func) {
   var iFunction = function(el) { total = func(total, el) }
   myEach(array, iFunction);
   return total;
+}
+
+//OR 
+
+Array.prototype.myInject = function(func) {
+  var result = this[0];
+  
+  this.slice(1).myEach(function(element) {
+    result = func(result, element);
+  });
 }
 
 // console.log(myInject([1,2,10], function(sum ,element){ return sum * element  }))
