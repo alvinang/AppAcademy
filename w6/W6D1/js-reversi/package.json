@@ -1,0 +1,21 @@
+{
+  "name": "js-reversi",
+  "version": "0.0.0",
+  "description": "A Reversi CLI game.",
+  "main": "index.js",
+  "scripts": {
+    "test": "run_tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paradasia/js-reversi"
+  },
+  "author": "paradasia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/paradasia/js-reversi/issues"
+  },
+  "devDependencies": {
+    "mocha": "~1.13.0"
+  }
+}
