@@ -1,4 +1,5 @@
 var readline = require('readline');
+
 var READER = readline.createInterface({
   input: process.stdin,
   output: process.stdout

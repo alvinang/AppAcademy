@@ -1,4 +1,5 @@
 var readline = require('readline');
+
 var READER = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -15,12 +16,15 @@ var askLessThan = function(el1, el2, callback) {
 }
 
 var performSortPass = function(arr, i, madeAnySwaps, callback) {
+  
   if (i < arr.length - 1) {
+    
     askLessThan(arr[i], arr[i + 1], function(lessThan){
       if (lessThan === false) {
         var tmp = arr[i];
         arr[i] = arr[i + 1];
         arr[i +1] = tmp;
+        
         madeAnySwaps = true;
       }
 
