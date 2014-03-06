@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asteroids</title>
+</head>
+<body>
+    <canvas width="500" height="500"></canvas>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/keymaster/1.6.1/keymaster.min.js"></script>
+    <script src="game.js"></script>
+    <script src="moving_object.js"></script>
+    <script src="asteroid.js"></script>
+    <script src="ship.js"></script>
+    <script>
+        var canvas = document.getElementsByTagName("canvas")[0];
+        new Asteroids.Game(canvas).start();
+    </script>
+</body>
+</html>
