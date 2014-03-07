@@ -1,0 +1,23 @@
+.container {
+  background-color: green;
+  width: 600px;
+  height: 600px;
+}
+
+.container div {
+  background-color: purple;
+  float: left;
+  width: 30%;
+  height: 30%;
+  margin: 1.5%;
+  font-size: 100px;
+  text-align: center;
+}
+
+div.clickedX {
+  background-color: red;
+}
+
+div.clickedY {
+  background-color: pink;
+}

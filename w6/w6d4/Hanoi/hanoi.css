@@ -1,0 +1,60 @@
+.container {
+  background-color: blue;
+  width: 700px;
+  height: 420px;
+}
+
+.tower {
+  height: 90%;
+  width: 200px;
+  background-color: white;
+  float: left;
+  margin: 10px;
+}
+
+.tower div{
+  background-color: white;
+  width: 90%;
+  height: 30%;
+}
+
+ div.empty {
+  background-color: red;
+  width: 90%;
+  height: 30%;
+  margin: 1.5%;
+
+}
+
+div.small {
+  background-color: purple;
+  width: 25%;
+  height: 30%;
+  margin: 1.5%;
+
+
+}
+
+div.medium {
+  background-color: purple;
+  width: 55%;
+  height: 30%;
+  margin: 1.5%;
+
+}
+
+div.large {
+  background-color: purple;
+  width: 90%;
+  height: 30%;
+  margin: 1.5%;
+
+}
+
+div.clickedX {
+  background-color: red;
+}
+
+div.clickedY {
+  background-color: pink;
+}
