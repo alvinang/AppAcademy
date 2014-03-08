@@ -1,0 +1,75 @@
+<h1>All the users!</h1>
+<ul>
+  <% @users.each do |user| %>
+  <li>
+    <%= user.username %>
+    <%# if can_friend?(user.id) %>
+    <span class="friend-buttons <%= can_friend?(user.id) ? "can-friend" : "can-unfriend" %>">
+      <button class="friend"
+       data-friend-id="<%= user.id %>">Add Friend</button>
+      <%# elsif can_unfriend?(user.id) %>
+       <button class="unfriend"
+        data-friend-id="<%= user.id %>" method="delete">Remove Friend</button>
+    </span>
+    <%# end %>
+  </li>
+  <% end %>
+</ul>
+
+
+<script>
+$(document).ready(function () {
+
+  var toggleFriendButtons = function (el) {
+    $(el).toggleClass('can-friend can-unfriend');
+  };
+
+
+  $("ul").on("click", 'li button', function (event) {
+    event.preventDefault();
+    var friend = $(this);
+    var friendId = friend.data('friend-id');
+
+    friend.attr("disabled", true);
+    // friend.text('waiting...'); figure me out later
+
+    $.ajax({
+      url: "/users/" + friendId + "/friendships",
+      type: 'post',
+      data: friendId,
+      success: function(){
+        friend.attr("disabled", false);
+        toggleFriendButtons(friend.parent());
+      },
+      error: function(){
+        alert("Dude, c'mon man....");
+      }
+    });
+  });
+
+    //
+    // $("ul").on("click", 'li .unfriend', function (event) {
+    //   event.preventDefault();
+    //   var friend = $(this);
+    //   var friendId = friend.data('friend-id');
+    //   var createButton =  '<button class="friend" data-friend-id="' + friendId + '"method="post">Remove Friend</button>'
+    //
+    //   friend.attr("disabled", true);
+    //   friend.text("unfriending...");
+    //   $.ajax({
+    //     url: "/users/" + friendId + "/friendships",
+    //     type: 'post',
+    //     data: friendId,
+    //     success: function(){
+    //       friend.attr("disabled", false);
+    //       friend.remove();
+    //     },
+    //     error: function(){
+    //       alert("Dude, c'mon man....");
+    //     }
+    //   });
+    // });
+
+
+});
+</script>

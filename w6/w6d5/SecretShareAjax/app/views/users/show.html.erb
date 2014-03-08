@@ -1,0 +1,48 @@
+<h1><%= @user.username %></h1>
+
+<h2>Secrets</h2>
+<ul class="secrets">
+  <% @user.received_secrets.each do |secret| %>
+  <li><%= secret.title %></li>
+  <% end %>
+</ul>
+<h1>New Secret?</h1>
+
+<%= render 'secrets/form' %>
+Tags: <% Tag.all.each do |tag| %>
+<%= tag.name %>
+<% end %>
+<script type="application/json" id="bootstrapped_emails_json">
+  { "tags": <%= Tag.all.to_json.html_safe %> }
+</script>
+
+<script>
+
+$(document).ready(function () {
+  var submitHandler = function(){
+    var tags = <%= User.all.to_json.html_safe %>
+
+    $('#post-new-secret').on('submit' ,function(event) {
+      event.preventDefault();
+      var $form = $(this);
+      var data = $form.serializeJSON();
+      $.ajax({
+        url: $form.attr('action'),
+        type: 'POST',
+        data: data,
+        success: function () {
+          console.log(data)
+          $('ul.secrets').append("<li>" + data.secret.title + "</li>" );
+          $('#post-new-secret').each(function(){
+            this.reset();
+          });
+        },
+        error: function () {
+          alert("fail!");
+        }
+      });
+    });
+  };
+  submitHandler();
+});
+</script>

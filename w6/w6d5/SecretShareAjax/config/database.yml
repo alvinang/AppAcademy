@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  database: secret_share_ajax_dev
+  host: localhost
+  pool: 5
+  timeout: 5000
