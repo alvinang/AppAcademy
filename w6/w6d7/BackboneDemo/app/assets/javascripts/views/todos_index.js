@@ -30,8 +30,7 @@ window.Todo.Views.TodosIndex = Backbone.View.extend({
       todos: this.collection
     })
     
-    this.$el.html(renderedContent);
-    
+    this.$el.html(renderedContent);    
     return this;
   }
 });

@@ -20,10 +20,10 @@ window.Todo.Views.TodosNew = Backbone.View.extend({
     newTodo.save({}, {
       success: function () {
         Todo.Collections.todos.add(newTodo);
+        Backbone.history.navigate("", { trigger: true });
       }
     })
     
-
     // newTodo.set('title', $('#todo_title').val());
     // can use $('#todo_title).val() on top or in {} in save
   }
