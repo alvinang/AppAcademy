@@ -2,7 +2,7 @@
 
   var Hanoi = root.Hanoi = (root.Hanoi || {});
 
-  var UI = Hanoi.UI = function(game) {
+  var UI = Hanoi.UI = function UI (game) {
     this.game = game;
   }
 
@@ -19,10 +19,9 @@
         return;
       }
 
-
       if (that.move(that.from_tower, position)) {
         if(that.won())
-          alert("you suck");
+          alert("You Won!");
       } else {
         alert('illegal move: try again');
       }
@@ -44,16 +43,9 @@
 
     return movement;
   }
-
-
+  
   UI.prototype.won = function(){
     return this.game.isWon();
   }
-
-  // UI.prototype.play = function(){
-  //   this.listener();
-  // }
-
-
 
 })(this)

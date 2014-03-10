@@ -1,4 +1,6 @@
 class FriendshipsController < ApplicationController
+  before_action :require_current_user!
+  
   def create
     sleep(2)
     @friendship = Friendship.new(

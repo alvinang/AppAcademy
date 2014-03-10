@@ -14,12 +14,10 @@ var sum = function() {
 Function.prototype.myBind = function(object) {
   var that = this;
   var that_args = Array.prototype.slice.call(arguments, 1);
-  // that_args.shift();
 
   return function() {
     var more_args = Array.prototype.slice.call(arguments);
-    var new_args = that_args.concat(more_args);
-    return that.apply(object, new_args);
+    return that.apply(object, that_args.concat(more_args));
   }
 }
 
@@ -32,7 +30,7 @@ var curriedSum = function(numArgs) {
   var _curriedSum = function(num) {
     numbers.push(num);
 
-    if (numbers.length === numArgs) {
+    if (numbers.length == numArgs) {
       var total = 0;
 
       numbers.forEach(function(n) {
