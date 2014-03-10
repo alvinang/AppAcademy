@@ -6,12 +6,17 @@ window.Todo.Views.TodosIndex = Backbone.View.extend({
     "click button.refresh": "refresh"
   },
   
+  initialize: function (options) {
+    this.listenTo(
+      this.collection, 
+      'sync add', // only fetch newly added event (add) 
+      this.render //when install listener, backbone will bind this function
+                  // to listener for you
+    );
+  },
+  
   refresh: function () {
-    var view = this;
-    
-    this.collection.fetch({
-      success: function () { view.render(); }
-    });
+    this.collection.fetch();
   },
   
   // not needed if we use collection in todo.js root file

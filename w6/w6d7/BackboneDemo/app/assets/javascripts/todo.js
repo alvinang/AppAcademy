@@ -10,9 +10,7 @@ window.Todo = {
     });
     
     Todo.Collections.todos.fetch({
-      success: function() {
-        $('body').append(view.render().$el);  
-      }
+      $('body').append(view.render().$el)
     });
   }
 };
