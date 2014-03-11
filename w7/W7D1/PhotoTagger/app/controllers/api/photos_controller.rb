@@ -19,6 +19,11 @@ class Api::PhotosController < ApplicationController
     @photos = Photo.where("owner_id = ?", params[:user_id])
     render :json => @photos
   end
+  
+  def show
+    @photo = Photo.find(params[:id])
+    render :json => @photo
+  end
 
   private
   def photo_params
