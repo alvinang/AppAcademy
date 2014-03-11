@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  database: photo_tagger_dev
+  host: localhost
+  pool: 5
+  timeout: 5000
