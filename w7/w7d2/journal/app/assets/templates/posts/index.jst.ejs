@@ -1,0 +1,18 @@
+<div class="panel-heading">
+  <h4 class="panel-title" >
+    <a href="#/posts/new">New Post</a>
+  </h4>
+</div>
+
+<ul>
+<% posts.forEach(function(post) { %>
+
+    <li class="panel-body" data-id="<%= post.escape('id') %>">
+     <span class="glyphicon glyphicon-star">
+  <a href="#/posts/<%= post.escape('id') %>">
+    <%= post.escape("title")%>
+  </a>
+    <button class="delete-post btn btn-success btn-xs">Delete</button>
+  </span>
+<% }) %>
+</ul>

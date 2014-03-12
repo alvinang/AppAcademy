@@ -1,0 +1,15 @@
+<form class="new-post">
+
+  <label>
+    Title
+    <input type="text" name="post[title]" value="<%= post.escape('title') %>">
+  </label><br>
+
+
+    Content
+    <textarea name="post[body]" rows="4" cols="50"><%= post.escape('body') %>
+  </textarea><br>
+
+  <input type="submit" value="Create Post">
+
+</form>
