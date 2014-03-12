@@ -14,11 +14,6 @@ class Api::PostsController < ApplicationController
     render json: Post.all
   end
 
-  def edit
-    @post = Post.find(params[:id])
-    render json: @post
-  end
-
   def index
     @posts = Post.all
     respond_to do |format|
@@ -29,11 +24,6 @@ class Api::PostsController < ApplicationController
 
   def new
     @post = Post.new
-    render json: @post
-  end
-
-  def show
-    @post = Post.find(params[:id])
     render json: @post
   end
 

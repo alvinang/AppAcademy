@@ -34,7 +34,6 @@ Journal.Views.PostShow = Backbone.View.extend ({
     this.model.set(modelEl, $updated.val());
     this.model.save({}, {
       success: function () {
-
         $elements.html($updated.val());
         $updated.parent().html($elements);
         return this;
