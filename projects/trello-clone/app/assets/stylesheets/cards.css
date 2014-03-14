@@ -1,0 +1,99 @@
+
+.flexwidth {
+  display: inline-block;
+}
+
+.overlay {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3)
+}
+
+.card_placeholder {
+  background-color: #909090;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+
+li.card_entry {
+  cursor: pointer;
+  font-size: 15px;
+  background-color: #daf1fb;
+  border: 1px solid black;
+  padding: 3px;
+  margin: 3px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  font-weight: 700
+}
+
+li.placeholder {
+  font-size: 15px;
+  font-style: italic;
+}
+
+ul.todo_list {
+  list-style-type: circle !important;
+}
+
+label.todo_label {
+  display: inline;
+  margin: 2px;
+  padding-right: 10px;
+}
+
+span.newTodo {
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  padding: 3px;
+  font-size: 12px;
+}
+
+span.newTodo:hover {
+  font-style: italic;
+}
+
+ul.user_list {
+  list-style-type: circle !important;
+}
+
+div.board_members {
+  clear: both;
+}
+
+li.dragged {
+  box-shadow: 5px 5px 2px #888888;
+  transform: rotate(30deg);
+  -webkit-transform: rotate(3deg);
+}
+
+.cardDetail {
+    padding: 20px;
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 255);
+    position: fixed;
+    
+    overflow: auto;
+    
+    top: 25px;
+    left: 40%;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+.user_card_list {
+  width: 30%;
+}
+
+span.deleteCard {
+  margin-right: 9px;
+  float: right;
+  
+}
