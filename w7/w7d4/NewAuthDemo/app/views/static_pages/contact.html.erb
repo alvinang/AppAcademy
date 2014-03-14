@@ -1,0 +1,72 @@
+<h1>Contact</h1>
+<div class="row">
+  <div class="col-md-6">
+    <form role="form" class="form-horizontal" action="#" method="post"  id="contact-form">
+      <input
+      name="authenticity_token"
+      type="hidden"
+      value="<%= form_authenticity_token %>">
+
+      <div class="form-group">
+        <label for="name" class="col-md-4 col-xs-4 control-label">Name</label>
+        <div class="col-md-8 col-xs-8">
+          <input
+          type="text"
+          name="name"
+          id="name"
+          class="form-control"
+          placeholder="Name" autofocus>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="col-md-4 col-xs-4  control-label">Email</label>
+        <div class="col-md-8 col-xs-8">
+          <input
+          type="email"
+          name="email"
+          id="email"
+          class="form-control"
+          placeholder="Email">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="comments" class="col-md-4 col-xs-4  control-label">Comments</label>
+        <div class="col-md-8 col-xs-8">
+          <textarea
+            name="comments"
+            id="comments"
+            class="form-control"
+            rows="5"
+            placeholder="tell me"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-offset-4 col-xs-8">
+          <button type="submit" class="btn btn-danger">
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-md-6">
+    <address>
+      <strong>A&S Bikes</strong><br>
+      31 Miller Ave<br>
+      Mill Valley, CA 94941<br>
+      <abbr title="Phone">P:</abbr> (415) 726-7777
+    </address>
+
+    <address>
+      <strong>Sophy Lee (aka master)</strong><br>
+      <a href="mailto:#">sophy@bikeparadise.com</a><br><br>
+
+      <strong>Alvin Ang (aka toilet cleaner)</strong><br>
+      <a href="mailto:#">alvin@bikeparadise.com</a>
+    </address>
+  </div>
+</div>

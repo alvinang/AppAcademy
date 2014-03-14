@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NewAuthDemo</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+     <%= render partial: 'layouts/navbar' %>
+
+    <div class="container">
+      <div class="row">
+        <% if flash[:notice] %>
+          <div class="alert alert-success">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="alert"
+              aria-hidden="true">&times;
+            </button>
+          <strong><%= flash[:notice][0] %></strong>
+          </div>
+        <% end %>
+        <% if flash[:errors] %>
+        <div class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <% flash[:errors].each do |error| %>
+          <strong><%= error %></strong>
+          <% end %>
+        </div>
+        <br>
+        <% end %>
+
+
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>
