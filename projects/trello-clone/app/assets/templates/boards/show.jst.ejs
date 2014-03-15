@@ -1,0 +1,18 @@
+<h2><%= board.escape('title') %></h2>
+
+<% board.lists().each(function(list) { %>
+<div class="col-xs-2">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <%= list.escape('title') %>      
+      </h3>      
+    </div>
+    
+    <div class="panel-body">
+      
+    </div>
+  </div>
+</div>
+<% }) %>
+

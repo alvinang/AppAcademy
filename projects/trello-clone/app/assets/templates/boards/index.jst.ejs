@@ -1,6 +1,13 @@
-<h1>Index</h1>
-
 <div class="main-boards">
-<p><a href="#" class="add-boards">Add Boards</a></p>
+<p><a href="#/boards/new" class="add-boards">Add Boards</a></p>
+
+<div class="added-boards" class='list-group'>
+  <% boards.forEach(function(board){ %>    
+    <a href="#/boards/<%= board.id %>" class="list-group-item">
+      <%= board.escape('title') %>
+    </a>
+  <% }) %>
+</ul>
   
 </div>
+

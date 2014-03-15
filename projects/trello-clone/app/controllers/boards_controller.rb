@@ -19,8 +19,8 @@ class BoardsController < ApplicationController
   
   def show
     @board = Board.find(params[:id])
-    
-    render json: @board
+    @lists = @board.lists.eager_load(:cards)
+    @cards = []
   end
   
   def create
@@ -59,6 +59,6 @@ class BoardsController < ApplicationController
 
   private
   def board_params
-    params.require(:board).permit(:title, :description)
+    params.require(:board).permit(:title)
   end
 end
