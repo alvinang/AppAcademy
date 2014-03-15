@@ -1,6 +1,6 @@
 <h2><%= board.escape('title') %></h2>
 
-<% board.lists().each(function(list) { %>
+<% board.lists().forEach(function(list) { %>
 <div class="col-xs-2">
   <div class="panel panel-primary">
     <div class="panel-heading">
@@ -9,9 +9,13 @@
       </h3>      
     </div>
     
-    <div class="panel-body">
-      
-    </div>
+    <% list.cards().forEach(function(card){ %>    
+      <div class="panel-body">    
+        <%= card.escape('title') %>
+        <%= card.escape('description') %>
+      </div>
+    <% }) %>
+  
   </div>
 </div>
 <% }) %>

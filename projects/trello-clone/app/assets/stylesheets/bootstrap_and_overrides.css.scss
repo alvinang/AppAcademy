@@ -2,4 +2,14 @@ nav.navbar {
   border-radius: 0;
 }
 
+div.panel {
+  border-radius: 0;
+  div.panel-heading {
+    border-radius: 0;  
+  }
+  div.panel-body {
+    border-radius: 0;    
+  }
+}
+
 @import 'bootstrap';
