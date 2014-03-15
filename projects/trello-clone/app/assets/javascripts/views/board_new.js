@@ -1,4 +1,4 @@
-window.Trellino.Views.BoardNew = Backbone.View.extend({
+window.Trellino.Views.BoardNew = Backbone.CompositeView.extend({
   template: JST['boards/new'],
   
   events: {

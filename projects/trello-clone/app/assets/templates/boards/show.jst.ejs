@@ -7,15 +7,9 @@
       <h3 class="panel-title">
         <%= list.escape('title') %>      
       </h3>      
-    </div>
-    
-    <% list.cards().forEach(function(card){ %>    
-      <div class="panel-body">    
-        <%= card.escape('title') %>
-        <%= card.escape('description') %>
-      </div>
-    <% }) %>
-  
+    </div>    
+
+    <div class="panel-body list-show"></div>
   </div>
 </div>
 <% }) %>

@@ -19,7 +19,8 @@ class BoardsController < ApplicationController
   
   def show
     @board = Board.find(params[:id])
-    @lists = @board.lists.eager_load(:cards)
+    @lists = @board.lists# .eager_load(:cards)
+    render :show
   end
   
   def create

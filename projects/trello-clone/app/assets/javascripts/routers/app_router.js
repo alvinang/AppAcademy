@@ -20,7 +20,7 @@ window.Trellino.Routers.AppRouter = Backbone.Router.extend({
   
   boardNew: function() {
     var boardNewView = new Trellino.Views.BoardNew({
-      model: new Trellino.Models.Board
+      model: new Trellino.Models.Board()
     });
         
     this._swapView(boardNewView);    
