@@ -4,13 +4,14 @@ window.Trellino.Collections.Boards = Backbone.Collection.extend({
   
   getOrFetch: function(id) {
     var model;
-    var boards = this;
     
     if (model = this.get(id)) {
       model.fetch();
       return model;
     } else {
-      model = new boards.model({ id: id });
+      model = new this.model({ id: id });
+
+      var boards = this;
       model.fetch({
         success: function() { boards.add(model) }
       });

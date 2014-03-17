@@ -2,11 +2,13 @@
 <p><a href="#/boards/new" class="add-boards">Add Boards</a></p>
 
 <div class="added-boards" class='list-group'>
+  
   <% boards.forEach(function(board){ %>    
     <a href="#/boards/<%= board.id %>" class="list-group-item">
       <%= board.escape('title') %>
-    </a>
+    </a>      
   <% }) %>
+
 </ul>
   
 </div>

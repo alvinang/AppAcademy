@@ -15,12 +15,14 @@ window.Trellino.Views.BoardNew = Backbone.CompositeView.extend({
   },
   
   addBoard: function(event) {
+    debugger
     event.preventDefault();
     var board = $('#new-board').serializeJSON().board;
+    
     this.model.save(board, {
-      success: function(board) {
-        Trellino.boards.add(board);
-        Backbone.history.navigate("#/boards/" + board.id, {trigger: true})
+      success: function(savedBoard) {
+        Trellino.boards.add(savedBoard);
+        Backbone.history.navigate("#/boards/" + savedBoard.id, {trigger: true})
       }, 
       error: function() {        
         alert(board.id + "board not saved")

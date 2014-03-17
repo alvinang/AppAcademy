@@ -1,20 +1,28 @@
-<h2><%= board.escape('title') %></h2>
+<h2>
+  <%= board.escape('title') %> 
+  <button class="col-xs-offset-1 delete-board btn btn-danger btn-xs">Delete Board</button>
+</h2>
+<hr>
 
-<div class="row" id="add-list">
-  <button class="new-list">New List</button>
+<div class='container'>
+  <div class="row" id="add-list">
+    <button class="new-list btn btn-primary">New List</button>
+  </div>
+  <hr>
 </div>
 
 <% board.lists().each(function(list) { %>
-<div class="col-xs-2">
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title">
-        <%= list.escape('title') %>      
-      </h3>      
-    </div>    
+  <div class="col-xs-2">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title" data-list-id="<%= list.escape('id') %>">
+          <%= list.escape('title') %> 
+          <button class="list-destroy btn btn-alert btn-xs">Delete</button>     
+        </h3>      
+      </div>    
 
-    <div class="panel-body list-show"></div>
+      <div class="panel-body list-show"></div>
+    </div>
   </div>
+  <% }) %>    
 </div>
-<% }) %>
-

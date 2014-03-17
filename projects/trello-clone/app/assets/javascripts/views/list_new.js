@@ -18,14 +18,15 @@ window.Trellino.Views.ListNew = Backbone.View.extend({
     event.preventDefault();
     var that = this;
     var list = $('#add-new-list').serializeJSON().list;
-    this.model.save(list, {
+    list.board_id = this.model.id;
+    list.rank = 1;
+    
+    this.model.lists().create(list, {
       success: function(list) {
-        that.collection.add(list);
       },
       error: function (list) {
         alert('list not added');
       }
-    })
-    
+    })    
   }
 }); 

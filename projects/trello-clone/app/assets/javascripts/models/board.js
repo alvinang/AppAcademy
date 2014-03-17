@@ -1,4 +1,5 @@
 window.Trellino.Models.Board = Backbone.Model.extend({
+  urlRoot: '/boards',
     
   lists: function() {    
     if (!this._lists) {
