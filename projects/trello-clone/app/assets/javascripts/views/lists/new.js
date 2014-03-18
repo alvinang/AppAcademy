@@ -1,4 +1,9 @@
 window.Trellino.Views.ListNew = Backbone.View.extend({
+  
+  initialize: function(options) {
+    this.list = options.list;
+  },
+  
   template: JST['lists/new'],
   
   events: {

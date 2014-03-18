@@ -1,0 +1,19 @@
+<% board.lists().each(function(list) { %>
+<div class="col-xs-3">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title" data-list-id="<%= list.escape('id') %>">
+        <%= list.escape('title') %> 
+        <button class="list-destroy btn btn-alert btn-xs">Delete</button>     
+      </h3>      
+    </div>    
+
+    <div class="panel-body list-show">
+      <button class="btn btn-default btn-xs add-card">Add Card</button>
+      <ul class="add-cards-in-list">
+        <li></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<% }) %>

@@ -11,18 +11,7 @@
   <hr>
 </div>
 
-<% board.lists().each(function(list) { %>
-  <div class="col-xs-2">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title" data-list-id="<%= list.escape('id') %>">
-          <%= list.escape('title') %> 
-          <button class="list-destroy btn btn-alert btn-xs">Delete</button>     
-        </h3>      
-      </div>    
+<div class="board-lists">
 
-      <div class="panel-body list-show"></div>
-    </div>
-  </div>
-  <% }) %>    
 </div>
+ 

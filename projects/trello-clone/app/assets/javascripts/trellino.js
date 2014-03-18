@@ -67,7 +67,6 @@ Backbone.CompositeView = Backbone.View.extend({
   }
 });
 
-
 $(document).ready(function(){
   Trellino.boards = new Trellino.Collections.Boards();
   
